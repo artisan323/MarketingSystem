@@ -1,0 +1,4 @@
+# Project exclude paths
+/mms-api/target/
+/mms-service/target/
+/mms-web/target/
