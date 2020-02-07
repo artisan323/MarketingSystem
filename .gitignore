@@ -2,3 +2,7 @@
 /mms-api/target/
 /mms-service/target/
 /mms-web/target/
+/mms-api/mms-api.iml
+/mms-service/mms-service.iml
+/mms-web/mms-web.iml
+/mmms.iml
