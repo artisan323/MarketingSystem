@@ -22,6 +22,7 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public Emp selectEmp() {
+        int i = 0;
         Emp emp = empDao.selectById("1");
         logger.info(emp.toString());
         return emp;
