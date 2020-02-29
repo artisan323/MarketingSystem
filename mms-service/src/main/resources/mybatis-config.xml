@@ -6,4 +6,7 @@
 		<setting name="logImpl" value="LOG4J"/>
 		<setting name="cacheEnabled"  value="true"/>
 	</settings>
+	<typeHandlers>
+		<typeHandler handler="cn.artisan323.util.AesEncryptHandler"/>
+	</typeHandlers>
 </configuration>
