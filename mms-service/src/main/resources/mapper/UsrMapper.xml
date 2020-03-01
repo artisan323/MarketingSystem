@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.UsrMapper" >
+  <resultMap id="BaseResultMap" type="cn.artisan323.domain.Usr" >
+    <id column="USR_CDE" property="usrCde" jdbcType="INTEGER" />
+    <result column="USR_NAME" property="usrName" jdbcType="VARCHAR" />
+    <result column="USR_ID_NO" property="usrIdNo" jdbcType="VARCHAR" />
+    <result column="USR_TEL" property="usrTel" jdbcType="VARCHAR" />
+    <result column="USR_EMAIL" property="usrEmail" jdbcType="VARCHAR" />
+    <result column="USR_OCCUPATION" property="usrOccupation" jdbcType="VARCHAR" />
+    <result column="USR_PASSWORD" property="usrPassword" jdbcType="VARCHAR" />
+    <result column="USR_STORE_NAME" property="usrStoreName" jdbcType="VARCHAR" />
+    <result column="USR_LOGIN_NAME" property="usrLoginName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USR_CDE, USR_NAME, USR_ID_NO, USR_TEL, USR_EMAIL, USR_OCCUPATION, USR_PASSWORD, USR_STORE_NAME, 
+    USR_LOGIN_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from USR
+    where USR_CDE = #{usrCde,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from USR
+    where USR_CDE = #{usrCde,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.artisan323.domain.Usr" >
+    insert into USR (USR_CDE, USR_NAME, USR_ID_NO, 
+      USR_TEL, USR_EMAIL, USR_OCCUPATION, 
+      USR_PASSWORD, USR_STORE_NAME, USR_LOGIN_NAME
+      )
+    values (#{usrCde,jdbcType=INTEGER}, #{usrName,jdbcType=VARCHAR}, #{usrIdNo,jdbcType=VARCHAR}, 
+      #{usrTel,jdbcType=VARCHAR}, #{usrEmail,jdbcType=VARCHAR}, #{usrOccupation,jdbcType=VARCHAR}, 
+      #{usrPassword,jdbcType=VARCHAR}, #{usrStoreName,jdbcType=VARCHAR}, #{usrLoginName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.artisan323.domain.Usr" >
+    insert into USR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usrCde != null" >
+        USR_CDE,
+      </if>
+      <if test="usrName != null" >
+        USR_NAME,
+      </if>
+      <if test="usrIdNo != null" >
+        USR_ID_NO,
+      </if>
+      <if test="usrTel != null" >
+        USR_TEL,
+      </if>
+      <if test="usrEmail != null" >
+        USR_EMAIL,
+      </if>
+      <if test="usrOccupation != null" >
+        USR_OCCUPATION,
+      </if>
+      <if test="usrPassword != null" >
+        USR_PASSWORD,
+      </if>
+      <if test="usrStoreName != null" >
+        USR_STORE_NAME,
+      </if>
+      <if test="usrLoginName != null" >
+        USR_LOGIN_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usrCde != null" >
+        #{usrCde,jdbcType=INTEGER},
+      </if>
+      <if test="usrName != null" >
+        #{usrName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrIdNo != null" >
+        #{usrIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel != null" >
+        #{usrTel,jdbcType=VARCHAR},
+      </if>
+      <if test="usrEmail != null" >
+        #{usrEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="usrOccupation != null" >
+        #{usrOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPassword != null" >
+        #{usrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="usrStoreName != null" >
+        #{usrStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrLoginName != null" >
+        #{usrLoginName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Usr" >
+    update USR
+    <set >
+      <if test="usrName != null" >
+        USR_NAME = #{usrName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrIdNo != null" >
+        USR_ID_NO = #{usrIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel != null" >
+        USR_TEL = #{usrTel,jdbcType=VARCHAR},
+      </if>
+      <if test="usrEmail != null" >
+        USR_EMAIL = #{usrEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="usrOccupation != null" >
+        USR_OCCUPATION = #{usrOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPassword != null" >
+        USR_PASSWORD = #{usrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="usrStoreName != null" >
+        USR_STORE_NAME = #{usrStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrLoginName != null" >
+        USR_LOGIN_NAME = #{usrLoginName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USR_CDE = #{usrCde,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Usr" >
+    update USR
+    set USR_NAME = #{usrName,jdbcType=VARCHAR},
+      USR_ID_NO = #{usrIdNo,jdbcType=VARCHAR},
+      USR_TEL = #{usrTel,jdbcType=VARCHAR},
+      USR_EMAIL = #{usrEmail,jdbcType=VARCHAR},
+      USR_OCCUPATION = #{usrOccupation,jdbcType=VARCHAR},
+      USR_PASSWORD = #{usrPassword,jdbcType=VARCHAR},
+      USR_STORE_NAME = #{usrStoreName,jdbcType=VARCHAR},
+      USR_LOGIN_NAME = #{usrLoginName,jdbcType=VARCHAR}
+    where USR_CDE = #{usrCde,jdbcType=INTEGER}
+  </update>
+</mapper>
