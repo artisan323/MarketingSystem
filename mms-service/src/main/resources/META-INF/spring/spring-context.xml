@@ -9,5 +9,8 @@
 
     <!-- 暴露服务接口 一个服务可以用多个协议暴露，一个服务也可以注册到多个注册中心-->
     <dubbo:service interface="cn.artisan323.service.EmpService" ref="empServiceImpl" />
+    <dubbo:service interface="cn.artisan323.service.UsrService" ref="usrServiceImpl" />
+
+
 
 </beans>

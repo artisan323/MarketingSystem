@@ -19,17 +19,17 @@
     <script src="js/bootstrap.min.js">
     </script>
     <script>
-        function testUserName() {
-            //步骤1：取值
-            var userName = document.getElementById("username").value.trim(); //trim()方法，去掉字符串两端的空格。
-            //步骤2：判断是否为空
-            if (userName.length > 11 || userName.length < 11) {
-                document.getElementById("span1").innerHTML = "手机号/邮箱格式错误！";
-                userName.setCustomValidity("密码不一致。");
-            } else {
-                document.getElementById("span1").innerHTML = "";
-            }
-        }
+        // function testUserName() {
+        //     //步骤1：取值
+        //     var userName = document.getElementById("username").value.trim(); //trim()方法，去掉字符串两端的空格。
+        //     //步骤2：判断是否为空
+        //     if (userName.length > 11 || userName.length < 11) {
+        //         document.getElementById("span1").innerHTML = "手机号/邮箱格式错误！";
+        //         userName.setCustomValidity("密码不一致。");
+        //     } else {
+        //         document.getElementById("span1").innerHTML = "";
+        //     }
+        // }
         function testPSW() {
             //步骤1：取值
             var psww = document.getElementById("psw").value.trim();
@@ -55,7 +55,7 @@
                     使用Smartisan ID 登录在线商城
                 </h4>
             </div>
-            <form action="#" method="post">
+            <form action="${APP_PATH}/usr/login" method="post">
                 <div align="center" id="input1">
                     <div align="center" class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">
@@ -63,8 +63,9 @@
                                     </span>
                                 </span>
                         <input type="text" id="username" name="username" style="width: 320px;height: 45px;"
-                               class="form-control" placeholder="手机号/邮箱" aria-describedby="basic-addon1"
-                               onblur="testUserName()" />
+                               class="form-control" placeholder="用户名" aria-describedby="basic-addon1"
+<%--                               onblur="testUserName()" --%>
+                                    />
                         <span style="color: red;" id="span1">
                                 </span>
                     </div>
@@ -82,20 +83,21 @@
                                 </span>
                     </div>
                 </div>
-            </form>
-            <div id="attention">
-                <div id="attention3" class="href">
-                    <a href="Signup.html">
-                        注册Smartisan ID&nbsp;
-                    </a>
+                <div id="attention">
+                    <div id="attention3" class="href">
+                        <a href="signup.jsp">
+                            注册Smartisan ID&nbsp;
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div id="submit">
-                <button class="btn btn-large btn-block btn-primary" style="width: 360px;height: 45px;"
-                        type="button">
-                    登录
-                </button>
-            </div>
+                <div id="submit">
+                    <button class="btn btn-large btn-block btn-primary" style="width: 360px;height: 45px;"
+                            type="submit">
+                        登录
+                    </button>
+                </div>
+            </form>
+
             <!--下实线-->
             <div id="hr">
                 <hr />

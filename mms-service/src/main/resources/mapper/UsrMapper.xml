@@ -31,8 +31,8 @@
       USR_TEL, USR_EMAIL, USR_OCCUPATION, 
       USR_PASSWORD, USR_STORE_NAME, USR_LOGIN_NAME
       )
-    values (#{usrCde,jdbcType=INTEGER}, #{usrName,jdbcType=VARCHAR}, #{usrIdNo,jdbcType=VARCHAR}, 
-      #{usrTel,jdbcType=VARCHAR}, #{usrEmail,jdbcType=VARCHAR}, #{usrOccupation,jdbcType=VARCHAR}, 
+    values (#{usrCde,jdbcType=INTEGER}, #{usrName,jdbcType=VARCHAR}, #{usrIdNo,jdbcType=VARCHAR},
+      #{usrTel,jdbcType=VARCHAR}, #{usrEmail,jdbcType=VARCHAR}, #{usrOccupation,jdbcType=VARCHAR},
       #{usrPassword,jdbcType=VARCHAR}, #{usrStoreName,jdbcType=VARCHAR}, #{usrLoginName,jdbcType=VARCHAR}
       )
   </insert>
@@ -139,4 +139,11 @@
       USR_LOGIN_NAME = #{usrLoginName,jdbcType=VARCHAR}
     where USR_CDE = #{usrCde,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByLoginName" parameterType="String" resultMap="BaseResultMap">
+    select
+    *
+    from USR
+    where USR_LOGIN_NAME = #{usrLoginName,jdbcType=VARCHAR}
+  </select>
 </mapper>

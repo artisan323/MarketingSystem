@@ -57,16 +57,13 @@
     </bean>
 
 
-    <!--
-     <bean id="handlerExceptionResolver" class="com.caxs.mdd.exceptionhandler.BBS7ExceptionHandler" />
-    -->
+
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
-        <property name="prefix" value="/static/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
 
     <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
     <bean id="multipartResolver"
@@ -76,20 +73,6 @@
         <property name="maxUploadSize" value="100000000" />
     </bean>
 
-    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
-
-    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中  -->
-    <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
-    <!--<bean id="exceptionResolver"
-        class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop
-                    key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>
-            </props>
-        </property>
-    </bean>
-    -->
 
 
 </beans>

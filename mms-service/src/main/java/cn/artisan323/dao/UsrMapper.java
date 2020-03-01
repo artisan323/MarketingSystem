@@ -14,4 +14,6 @@ public interface UsrMapper {
     int updateByPrimaryKeySelective(Usr record);
 
     int updateByPrimaryKey(Usr record);
+
+    Usr selectByLoginName(String usrLoginName);
 }

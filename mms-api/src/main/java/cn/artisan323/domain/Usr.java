@@ -1,9 +1,11 @@
 package cn.artisan323.domain;
 
+import java.io.Serializable;
+
 /**
  * @author wannengqingnian
  */
-public class Usr {
+public class Usr implements Serializable {
     private Integer usrCde;
 
     private String usrName;
@@ -92,5 +94,20 @@ public class Usr {
 
     public void setUsrLoginName(String usrLoginName) {
         this.usrLoginName = usrLoginName == null ? null : usrLoginName.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Usr{" +
+                "usrCde=" + usrCde +
+                ", usrName='" + usrName + '\'' +
+                ", usrIdNo='" + usrIdNo + '\'' +
+                ", usrTel='" + usrTel + '\'' +
+                ", usrEmail='" + usrEmail + '\'' +
+                ", usrOccupation='" + usrOccupation + '\'' +
+                ", usrPassword='" + usrPassword + '\'' +
+                ", usrStoreName='" + usrStoreName + '\'' +
+                ", usrLoginName='" + usrLoginName + '\'' +
+                '}';
     }
 }

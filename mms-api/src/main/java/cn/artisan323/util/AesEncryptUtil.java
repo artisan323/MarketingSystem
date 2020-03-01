@@ -29,19 +29,25 @@ public class AesEncryptUtil {
      * @return
      */
     public static String encrypt(String dataStr, String keyStrs) {
-        String content = "";
-        try {
-            //加密
-            Key key = generateKey(keyStrs);
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-            byte[] decrypt = cipher.doFinal(dataStr.getBytes());
-            //字节数组转16进制
-            content = byteArray2HexString(decrypt);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (dataStr == null){
+            return "";
+        }else if ("".equals(dataStr)){
+            return "";
+        }else {
+            String content = "";
+            try {
+                //加密
+                Key key = generateKey(keyStrs);
+                Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                cipher.init(Cipher.ENCRYPT_MODE, key);
+                byte[] decrypt = cipher.doFinal(dataStr.getBytes());
+                //字节数组转16进制
+                content = byteArray2HexString(decrypt);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return content;
         }
-        return content;
     }
 
     /**
@@ -51,19 +57,24 @@ public class AesEncryptUtil {
      * @return
      */
     public static String decrypt(String content, String keyStrs) {
-        String result = "";
-        try {
-            Key key = generateKey(keyStrs);
-            //解密
-            Cipher cipher1 = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher1.init(Cipher.DECRYPT_MODE, key);
-            byte[] decrypt2 = cipher1.doFinal(Base64.decodeBase64(content));
-            result = new String(decrypt2);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (content == null){
+            return null;
+        }else if("".equals(content)){
+            return "";
+        }else {
+            String result = "";
+            try {
+                Key key = generateKey(keyStrs);
+                //解密
+                Cipher cipher1 = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                cipher1.init(Cipher.DECRYPT_MODE, key);
+                byte[] decrypt2 = cipher1.doFinal(Base64.decodeBase64(content));
+                result = new String(decrypt2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
         }
-
-        return result;
     }
 
     /**
