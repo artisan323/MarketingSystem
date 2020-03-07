@@ -25,7 +25,7 @@
     <dubbo:application name="ssm-service"/>
 
     <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="zookeeper://139.196.18.144:2181" />
+    <dubbo:registry protocol="zookeeper" address="zookeeper://101.200.32.76:2181" />
     <!-- <dubbo:registry  address="N/A" /> -->
 
     <!-- 用dubbo协议在20880端口暴露服务 -->

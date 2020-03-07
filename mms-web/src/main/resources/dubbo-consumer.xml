@@ -11,7 +11,7 @@
     <dubbo:application name="mms-web"/>
 
     <!-- 使用zookeeper注册中心获取服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="zookeeper://139.196.18.144:2181" />
+    <dubbo:registry protocol="zookeeper" address="zookeeper://101.200.32.76:2181" />
     <!-- <dubbo:registry address="N/A" /> -->
 
 

@@ -51,34 +51,21 @@
                 <li>
                     <i aria-hidden="true">
                     </i>
-                    <!-- 购物车图 -->
-                    <!-- <div id="count">
-                        <a>
-                            <img class="customer_logo" src="img\car.png">
-                            <span style="color: white;" id="totalNum">
-                                0
-                            </span>
-                            <div class="car_hidden">
-
-
-                            </div>
-                        </a>
-                    </div> -->
                 </li>
             </ul>
             <ul class="page-top-list" id="fix-show">
                 <li>
-                    <a href="#" class="a-active">
+                    <a href="index.jsp" class="a-active">
                         首页
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="forum.jsp">
                         论坛
                     </a>
                 </li>
                 <li>
-                    <a href="..\Appcenter\index.html">
+                    <a href="lottery.jsp">
                         每日抽奖
                     </a>
                 </li>

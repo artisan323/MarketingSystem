@@ -13,11 +13,9 @@
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!---->
-    <script src="js/jquery-1.11.3.js">
-    </script>
+    <script src="js/jquery-1.11.3.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="js/bootstrap.min.js">
-    </script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         // function testUserName() {
         //     //步骤1：取值
@@ -30,16 +28,16 @@
         //         document.getElementById("span1").innerHTML = "";
         //     }
         // }
-        function testPSW() {
-            //步骤1：取值
-            var psww = document.getElementById("psw").value.trim();
-            //步骤2：判断是否小于6位
-            if (psww.length < 6) {
-                document.getElementById("span2").innerHTML = "密码不能小于6位!";
-            } else {
-                document.getElementById("span2").innerHTML = "";
-            }
-        }
+        // function testPSW() {
+        //     //步骤1：取值
+        //     var psww = document.getElementById("psw").value.trim();
+        //     //步骤2：判断是否小于6位
+        //     if (psww.length < 6) {
+        //         document.getElementById("span2").innerHTML = "密码不能小于6位!";
+        //     } else {
+        //         document.getElementById("span2").innerHTML = "";
+        //     }
+        // }
     </script>
     <link href="css/denglu.css" rel="stylesheet" type="text/css" />
 </head>
@@ -52,7 +50,7 @@
             </div>
             <div class="word" id="word1">
                 <h4 align="center">
-                    使用Smartisan ID 登录在线商城
+                    使用账号登录商户管理系统
                 </h4>
             </div>
             <form action="${APP_PATH}/usr/login" method="post">
@@ -86,7 +84,7 @@
                 <div id="attention">
                     <div id="attention3" class="href">
                         <a href="signup.jsp">
-                            注册Smartisan ID&nbsp;
+                            注册账号
                         </a>
                     </div>
                 </div>

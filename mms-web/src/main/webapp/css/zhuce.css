@@ -24,7 +24,7 @@
 	border-radius: 8px;
 	-webkit-box-shadow: #666 0px 0px 10px;
 	-moz-box-shadow: #666 0px 0px 10px;
-	box-shadow: #666 0px 0px 10px;background: white;behavior: url(/PIE.htc);
+	box-shadow: #666 0px 0px 10px;background: white;
 }
 #area1{
 	width: 421px;
@@ -34,7 +34,7 @@
 	border-radius: 8px 8px 0 0;
 	border-bottom:1px solid;
 	border-bottom-color: #C0C0C0;
-	font: "微软雅黑";
+	font-family: "微软雅黑";
 	font-size: 23px;
 	/*text-align: center;*/
 	line-height: 60px;
@@ -122,8 +122,7 @@
 .word_end{
 	font-size:12px;
 }
-.word_end a:li{
-	text-decoration: none;
+
 #span3{
 	color: red;
 	}

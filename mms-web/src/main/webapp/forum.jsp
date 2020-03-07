@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	application.setAttribute("APP_PATH", request.getContextPath());
+%>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
