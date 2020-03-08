@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.PosterMapper" >
+  <resultMap id="BaseResultMap" type="cn.artisan323.domain.Poster" >
+    <id column="POSTER_ID" property="posterId" jdbcType="INTEGER" />
+    <result column="BELONG_USR_ID" property="belongUsrId" jdbcType="INTEGER" />
+    <result column="POSTER_FULL_PATH" property="posterFullPath" jdbcType="VARCHAR" />
+    <result column="POSTER_FOLDER_PATH" property="posterFolderPath" jdbcType="VARCHAR" />
+    <result column="UP_IMG_NAME" property="upImgName" jdbcType="VARCHAR" />
+    <result column="UP_IMG_FULL_PATH" property="upImgFullPath" jdbcType="VARCHAR" />
+    <result column="SUFFIX" property="suffix" jdbcType="VARCHAR" />
+    <result column="SLOGEN" property="slogen" jdbcType="VARCHAR" />
+    <result column="BACKGRAND_FULL_PATH" property="backgrandFullPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    POSTER_ID, BELONG_USR_ID, POSTER_FULL_PATH, POSTER_FOLDER_PATH, UP_IMG_NAME, UP_IMG_FULL_PATH, 
+    SUFFIX, SLOGEN, BACKGRAND_FULL_PATH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from POSTER
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from POSTER
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.artisan323.domain.Poster" >
+    insert into POSTER (POSTER_ID, BELONG_USR_ID, POSTER_FULL_PATH, 
+      POSTER_FOLDER_PATH, UP_IMG_NAME, UP_IMG_FULL_PATH, 
+      SUFFIX, SLOGEN, BACKGRAND_FULL_PATH
+      )
+    values (#{posterId,jdbcType=INTEGER}, #{belongUsrId,jdbcType=INTEGER}, #{posterFullPath,jdbcType=VARCHAR}, 
+      #{posterFolderPath,jdbcType=VARCHAR}, #{upImgName,jdbcType=VARCHAR}, #{upImgFullPath,jdbcType=VARCHAR}, 
+      #{suffix,jdbcType=VARCHAR}, #{slogen,jdbcType=VARCHAR}, #{backgrandFullPath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.artisan323.domain.Poster" >
+    insert into POSTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="posterId != null" >
+        POSTER_ID,
+      </if>
+      <if test="belongUsrId != null" >
+        BELONG_USR_ID,
+      </if>
+      <if test="posterFullPath != null" >
+        POSTER_FULL_PATH,
+      </if>
+      <if test="posterFolderPath != null" >
+        POSTER_FOLDER_PATH,
+      </if>
+      <if test="upImgName != null" >
+        UP_IMG_NAME,
+      </if>
+      <if test="upImgFullPath != null" >
+        UP_IMG_FULL_PATH,
+      </if>
+      <if test="suffix != null" >
+        SUFFIX,
+      </if>
+      <if test="slogen != null" >
+        SLOGEN,
+      </if>
+      <if test="backgrandFullPath != null" >
+        BACKGRAND_FULL_PATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="posterId != null" >
+        #{posterId,jdbcType=INTEGER},
+      </if>
+      <if test="belongUsrId != null" >
+        #{belongUsrId,jdbcType=INTEGER},
+      </if>
+      <if test="posterFullPath != null" >
+        #{posterFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="posterFolderPath != null" >
+        #{posterFolderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgName != null" >
+        #{upImgName,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgFullPath != null" >
+        #{upImgFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="suffix != null" >
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="slogen != null" >
+        #{slogen,jdbcType=VARCHAR},
+      </if>
+      <if test="backgrandFullPath != null" >
+        #{backgrandFullPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Poster" >
+    update POSTER
+    <set >
+      <if test="belongUsrId != null" >
+        BELONG_USR_ID = #{belongUsrId,jdbcType=INTEGER},
+      </if>
+      <if test="posterFullPath != null" >
+        POSTER_FULL_PATH = #{posterFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="posterFolderPath != null" >
+        POSTER_FOLDER_PATH = #{posterFolderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgName != null" >
+        UP_IMG_NAME = #{upImgName,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgFullPath != null" >
+        UP_IMG_FULL_PATH = #{upImgFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="suffix != null" >
+        SUFFIX = #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="slogen != null" >
+        SLOGEN = #{slogen,jdbcType=VARCHAR},
+      </if>
+      <if test="backgrandFullPath != null" >
+        BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Poster" >
+    update POSTER
+    set BELONG_USR_ID = #{belongUsrId,jdbcType=INTEGER},
+      POSTER_FULL_PATH = #{posterFullPath,jdbcType=VARCHAR},
+      POSTER_FOLDER_PATH = #{posterFolderPath,jdbcType=VARCHAR},
+      UP_IMG_NAME = #{upImgName,jdbcType=VARCHAR},
+      UP_IMG_FULL_PATH = #{upImgFullPath,jdbcType=VARCHAR},
+      SUFFIX = #{suffix,jdbcType=VARCHAR},
+      SLOGEN = #{slogen,jdbcType=VARCHAR},
+      BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR}
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.PosterDao">
+  <resultMap id="BaseResultMap" type="generate.Poster">
+    <id column="POSTER_ID" jdbcType="INTEGER" property="posterId" />
+    <result column="BELONG_USR_ID" jdbcType="INTEGER" property="belongUsrId" />
+    <result column="POSTER_FULL_PATH" jdbcType="VARCHAR" property="posterFullPath" />
+    <result column="POSTER_FOLDER_PATH" jdbcType="VARCHAR" property="posterFolderPath" />
+    <result column="UP_IMG_NAME" jdbcType="VARCHAR" property="upImgName" />
+    <result column="UP_IMG_FULL_PATH" jdbcType="VARCHAR" property="upImgFullPath" />
+    <result column="SUFFIX" jdbcType="VARCHAR" property="suffix" />
+    <result column="SLOGEN" jdbcType="VARCHAR" property="slogen" />
+    <result column="BACKGRAND_FULL_PATH" jdbcType="VARCHAR" property="backgrandFullPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    POSTER_ID, BELONG_USR_ID, POSTER_FULL_PATH, POSTER_FOLDER_PATH, UP_IMG_NAME, UP_IMG_FULL_PATH, 
+    SUFFIX, SLOGEN, BACKGRAND_FULL_PATH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from POSTER
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from POSTER
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="POSTER_ID" keyProperty="posterId" parameterType="generate.Poster" useGeneratedKeys="true">
+    insert into POSTER (BELONG_USR_ID, POSTER_FULL_PATH, POSTER_FOLDER_PATH, 
+      UP_IMG_NAME, UP_IMG_FULL_PATH, SUFFIX, 
+      SLOGEN, BACKGRAND_FULL_PATH)
+    values (#{belongUsrId,jdbcType=INTEGER}, #{posterFullPath,jdbcType=VARCHAR}, #{posterFolderPath,jdbcType=VARCHAR}, 
+      #{upImgName,jdbcType=VARCHAR}, #{upImgFullPath,jdbcType=VARCHAR}, #{suffix,jdbcType=VARCHAR}, 
+      #{slogen,jdbcType=VARCHAR}, #{backgrandFullPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="POSTER_ID" keyProperty="posterId" parameterType="generate.Poster" useGeneratedKeys="true">
+    insert into POSTER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="belongUsrId != null">
+        BELONG_USR_ID,
+      </if>
+      <if test="posterFullPath != null">
+        POSTER_FULL_PATH,
+      </if>
+      <if test="posterFolderPath != null">
+        POSTER_FOLDER_PATH,
+      </if>
+      <if test="upImgName != null">
+        UP_IMG_NAME,
+      </if>
+      <if test="upImgFullPath != null">
+        UP_IMG_FULL_PATH,
+      </if>
+      <if test="suffix != null">
+        SUFFIX,
+      </if>
+      <if test="slogen != null">
+        SLOGEN,
+      </if>
+      <if test="backgrandFullPath != null">
+        BACKGRAND_FULL_PATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="belongUsrId != null">
+        #{belongUsrId,jdbcType=INTEGER},
+      </if>
+      <if test="posterFullPath != null">
+        #{posterFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="posterFolderPath != null">
+        #{posterFolderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgName != null">
+        #{upImgName,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgFullPath != null">
+        #{upImgFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="suffix != null">
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="slogen != null">
+        #{slogen,jdbcType=VARCHAR},
+      </if>
+      <if test="backgrandFullPath != null">
+        #{backgrandFullPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.Poster">
+    update POSTER
+    <set>
+      <if test="belongUsrId != null">
+        BELONG_USR_ID = #{belongUsrId,jdbcType=INTEGER},
+      </if>
+      <if test="posterFullPath != null">
+        POSTER_FULL_PATH = #{posterFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="posterFolderPath != null">
+        POSTER_FOLDER_PATH = #{posterFolderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgName != null">
+        UP_IMG_NAME = #{upImgName,jdbcType=VARCHAR},
+      </if>
+      <if test="upImgFullPath != null">
+        UP_IMG_FULL_PATH = #{upImgFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="suffix != null">
+        SUFFIX = #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="slogen != null">
+        SLOGEN = #{slogen,jdbcType=VARCHAR},
+      </if>
+      <if test="backgrandFullPath != null">
+        BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.Poster">
+    update POSTER
+    set BELONG_USR_ID = #{belongUsrId,jdbcType=INTEGER},
+      POSTER_FULL_PATH = #{posterFullPath,jdbcType=VARCHAR},
+      POSTER_FOLDER_PATH = #{posterFolderPath,jdbcType=VARCHAR},
+      UP_IMG_NAME = #{upImgName,jdbcType=VARCHAR},
+      UP_IMG_FULL_PATH = #{upImgFullPath,jdbcType=VARCHAR},
+      SUFFIX = #{suffix,jdbcType=VARCHAR},
+      SLOGEN = #{slogen,jdbcType=VARCHAR},
+      BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR}
+    where POSTER_ID = #{posterId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -101,13 +101,18 @@
     </div>
 </div>
 <div class="main">
-    <div class="main-main">
-        <!--<section>
-        <div class="cover"></div>
-        </section>-->
-        <img src="pic/index/cheat.png">
-    </div>
-
+<%--    <div class="main-main">--%>
+<%--        <!--<section>--%>
+<%--        <div class="cover"></div>--%>
+<%--        </section>-->--%>
+<%--        <img src="${APP_PATH}/poster/getPoster">--%>
+<%--    </div>--%>
+    <section class="t-block">
+        <h5>
+            我的海报
+        </h5>
+        <img src="${APP_PATH}/poster/getPoster">
+    </section>
     <section class="t-block">
         <h5>
             热门商品

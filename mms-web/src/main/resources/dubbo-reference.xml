@@ -9,5 +9,6 @@
     <!-- 用户服务接口 -->
     <dubbo:reference id="empService" interface="cn.artisan323.service.EmpService" timeout="300000"/>
     <dubbo:reference id="usrService" interface="cn.artisan323.service.UsrService" timeout="300000"/>
+    <dubbo:reference id="posterService" interface="cn.artisan323.service.PosterService" timeout="300000"/>
 
 </beans>

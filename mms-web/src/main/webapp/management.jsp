@@ -25,6 +25,8 @@ application.setAttribute("APP_PATH", request.getContextPath());
 	<script src="js/jquery-1.11.3.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<%--引入jQuery支持的form--%>
 	<style type="text/css">
 		.car_hidden{ background: #f8f8f8; position: relative; } .car_hidden .car_total{
 																	position: absolute; bottom: 20px; left: 0; right: 0; margin: auto; }
@@ -37,6 +39,20 @@ application.setAttribute("APP_PATH", request.getContextPath());
 					},
 					true);
 		}
+
+		$(function () {
+			$('#student-import-form').ajaxForm(function (data) {
+				console.log(data+"123");
+				if (data.success == "true") {
+					alert(data.message)
+					window.location.reload();
+				} else {
+					alert(data.message);
+					window.location.reload();
+				}
+			});
+		});
+
 	</script>
 </head>
 <body>
@@ -90,26 +106,20 @@ application.setAttribute("APP_PATH", request.getContextPath());
 		</h5>
 		<ul>
 			<li class="width-2">
-
 			</li>
 			<li class="width-2">
-				<form action="${APP_PATH}/poster/uploadPoster" method="post" enctype="multipart/form-data">
-					<p class="title">选择一张图片: </p>
+				<form id="imgform" action="${APP_PATH}/poster/uploadPoster" method="post" enctype="multipart/form-data">
 					<div class="form-group">
+						<p class="title">选择一张图片: </p>
 						<input type="file" name="uploadPoster" id="exampleInputFile" style="width:100px;height:100px;">
 					</div>
-
-					<p class="title">输入Slogan: </p>
 					<div class="form-group">
+						<p class="title">输入Slogan: </p>
 						<input type="text" name="slogan" class="form-control" placeholder="Text input" >
 					</div>
-
-
 					<div class="form-group">
-
-
 					</div>
-					<input type="submit" class="btn btn-default">生成</input>
+					<input type="submit" id="ajaxSubmit" class="btn btn-default">生成</input>
 				</form>
 			</li>
 		</ul>
