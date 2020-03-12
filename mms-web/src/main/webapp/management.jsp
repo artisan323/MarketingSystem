@@ -125,6 +125,20 @@ application.setAttribute("APP_PATH", request.getContextPath());
 		</ul>
 
 	</section>
+	<section class="t-block">
+		<h5>
+			选择展示商品图片
+		</h5>
+		<ul>
+			<li class="width-2">
+
+			</li>
+			<li class="width-2">
+
+			</li>
+		</ul>
+
+	</section>
 </div>
 
 

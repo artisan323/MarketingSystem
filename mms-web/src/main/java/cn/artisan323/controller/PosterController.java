@@ -3,6 +3,7 @@ package cn.artisan323.controller;
 import cn.artisan323.domain.Poster;
 import cn.artisan323.domain.Usr;
 import cn.artisan323.service.PosterService;
+import cn.artisan323.util.HttpUtil;
 import cn.artisan323.util.RequestUtil;
 import cn.artisan323.util.ResponseUtil;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -38,6 +41,9 @@ public class PosterController {
         logger.info("进入生成海报控制器");
         //创建返回工具类
         ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
+
+
+
 
         try {
             Poster poster = new Poster();
@@ -57,9 +63,20 @@ public class PosterController {
             Usr usr = (Usr) session.getAttribute("usr");
             poster.setBelongUsrId(usr.getUsrCde());
 
+
+
             //保存文件到本地
             FileUtils.copyInputStreamToFile(uploadPoster.getInputStream(), new File(poster.getUpImgFullPath()));
             logger.info("接收到上传的图片，先存入本地，然后保存入库，保存对象poster = {}", poster.toString());
+
+
+            logger.info("测试上传图床开始");
+            String url = "http://129.28.173.126:8088/clientupimg/";
+            Map<String, String> requestParams = new HashMap<>(2);
+            requestParams.put("email", "artisan323@163.com");
+            requestParams.put("pass", "123456");
+            Object o = HttpUtil.requestOCRForHttp(url, requestParams, poster.getUpImgFullPath());
+            logger.info("测试上传图床结束  返回数据：{}", o.toString());
 
             //创建请求工具
             RequestUtil requestUtil = RequestUtil.getRequestUtil();
