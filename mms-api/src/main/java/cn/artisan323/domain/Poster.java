@@ -58,6 +58,32 @@ public class Poster implements Serializable {
      */
     private String backgrandFullPath;
 
+    /**
+     * 海报创建时间
+     */
+    private String createTime;
+
+    /**
+     * 图床的url
+     */
+    private String figureBed;
+
+    public String getFigureBed() {
+        return figureBed;
+    }
+
+    public void setFigureBed(String figureBed) {
+        this.figureBed = figureBed;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     public Integer getPosterId() {
         return posterId;
     }
@@ -136,5 +162,23 @@ public class Poster implements Serializable {
 
     public void setBackgrandFullPath(String backgrandFullPath) {
         this.backgrandFullPath = backgrandFullPath;
+    }
+
+    @Override
+    public String toString() {
+        return "Poster{" +
+                "posterId=" + posterId +
+                ", belongUsrId=" + belongUsrId +
+                ", posterFullPath='" + posterFullPath + '\'' +
+                ", posterFolderPath='" + posterFolderPath + '\'' +
+                ", upImgName='" + upImgName + '\'' +
+                ", upImgFullPath='" + upImgFullPath + '\'' +
+                ", posterFileSize='" + posterFileSize + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", slogen='" + slogen + '\'' +
+                ", backgrandFullPath='" + backgrandFullPath + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", figureBed='" + figureBed + '\'' +
+                '}';
     }
 }

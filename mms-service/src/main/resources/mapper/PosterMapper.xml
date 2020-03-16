@@ -11,10 +11,11 @@
     <result column="SUFFIX" property="suffix" jdbcType="VARCHAR" />
     <result column="SLOGEN" property="slogen" jdbcType="VARCHAR" />
     <result column="BACKGRAND_FULL_PATH" property="backgrandFullPath" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     POSTER_ID, BELONG_USR_ID, POSTER_FULL_PATH, POSTER_FOLDER_PATH, UP_IMG_NAME, UP_IMG_FULL_PATH, 
-    SUFFIX, SLOGEN, BACKGRAND_FULL_PATH
+    SUFFIX, SLOGEN, BACKGRAND_FULL_PATH,CREATE_TIME
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -29,11 +30,11 @@
   <insert id="insert" parameterType="cn.artisan323.domain.Poster" >
     insert into POSTER (POSTER_ID, BELONG_USR_ID, POSTER_FULL_PATH, 
       POSTER_FOLDER_PATH, UP_IMG_NAME, UP_IMG_FULL_PATH, 
-      SUFFIX, SLOGEN, BACKGRAND_FULL_PATH
+      SUFFIX, SLOGEN, BACKGRAND_FULL_PATH,CREATE_TIME
       )
     values (#{posterId,jdbcType=INTEGER}, #{belongUsrId,jdbcType=INTEGER}, #{posterFullPath,jdbcType=VARCHAR}, 
       #{posterFolderPath,jdbcType=VARCHAR}, #{upImgName,jdbcType=VARCHAR}, #{upImgFullPath,jdbcType=VARCHAR}, 
-      #{suffix,jdbcType=VARCHAR}, #{slogen,jdbcType=VARCHAR}, #{backgrandFullPath,jdbcType=VARCHAR}
+      #{suffix,jdbcType=VARCHAR}, #{slogen,jdbcType=VARCHAR}, #{backgrandFullPath,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.artisan323.domain.Poster" >
@@ -66,6 +67,9 @@
       <if test="backgrandFullPath != null" >
         BACKGRAND_FULL_PATH,
       </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="posterId != null" >
@@ -94,6 +98,9 @@
       </if>
       <if test="backgrandFullPath != null" >
         #{backgrandFullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -124,6 +131,9 @@
       <if test="backgrandFullPath != null" >
         BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR},
       </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
     </set>
     where POSTER_ID = #{posterId,jdbcType=INTEGER}
   </update>
@@ -139,4 +149,10 @@
       BACKGRAND_FULL_PATH = #{backgrandFullPath,jdbcType=VARCHAR}
     where POSTER_ID = #{posterId,jdbcType=INTEGER}
   </update>
+  <select id="selectPosterByUsrId" parameterType="integer" resultMap="BaseResultMap">
+    select * from POSTER where BELONG_USR_ID = {usrCde,jdbcType=INTEGER} order by CREATE_TIME desc ;
+  </select>
+  <select id="selectByTime" resultMap="BaseResultMap">
+    select * from  POSTER order by CREATE_TIME desc;
+  </select>
 </mapper>

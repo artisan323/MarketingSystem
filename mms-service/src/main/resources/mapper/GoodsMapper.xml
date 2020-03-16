@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.GoodsMapper" >
+    <resultMap id="BaseResultMap" type="cn.artisan323.domain.Goods" >
+        <id column="GD_CDE" property="gdCde" jdbcType="INTEGER" />
+        <result column="GD_GROUP" property="gdGroup" jdbcType="VARCHAR" />
+        <result column="GD_PATH" property="gdPath" jdbcType="VARCHAR" />
+        <result column="GD_URL" property="gdUrl" jdbcType="VARCHAR" />
+        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+        <result column="GD_PRICE" property="gdPrice" jdbcType="VARCHAR" />
+        <result column="BELONG_ID" property="belongId" jdbcType="INTEGER" />
+        <result column="GD_DETAILS" property="gdDetails" jdbcType="VARCHAR" />
+        <result column="HIT_COUNT" property="hitCount" jdbcType="INTEGER" />
+        <result column="GD_INDEX" property="gdIndex" jdbcType="INTEGER" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        GD_CDE, GD_GROUP, GD_PATH, GD_URL, CREATE_TIME, GD_PRICE, BELONG_ID, GD_DETAILS,
+        HIT_COUNT, GD_INDEX
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from GOODS
+        where GD_CDE = #{gdCde,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from GOODS
+        where GD_CDE = #{gdCde,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="cn.artisan323.domain.Goods" >
+        insert into GOODS (GD_CDE, GD_GROUP, GD_PATH,
+        GD_URL, CREATE_TIME, GD_PRICE,
+        BELONG_ID, GD_DETAILS, HIT_COUNT,
+        GD_INDEX)
+        values (#{gdCde,jdbcType=INTEGER}, #{gdGroup,jdbcType=VARCHAR}, #{gdPath,jdbcType=VARCHAR},
+        #{gdUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{gdPrice,jdbcType=VARCHAR},
+        #{belongId,jdbcType=INTEGER}, #{gdDetails,jdbcType=VARCHAR}, #{hitCount,jdbcType=INTEGER},
+        #{gdIndex,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.artisan323.domain.Goods" >
+        insert into GOODS
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="gdCde != null" >
+                GD_CDE,
+            </if>
+            <if test="gdGroup != null" >
+                GD_GROUP,
+            </if>
+            <if test="gdPath != null" >
+                GD_PATH,
+            </if>
+            <if test="gdUrl != null" >
+                GD_URL,
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME,
+            </if>
+            <if test="gdPrice != null" >
+                GD_PRICE,
+            </if>
+            <if test="belongId != null" >
+                BELONG_ID,
+            </if>
+            <if test="gdDetails != null" >
+                GD_DETAILS,
+            </if>
+            <if test="hitCount != null" >
+                HIT_COUNT,
+            </if>
+            <if test="gdIndex != null" >
+                GD_INDEX,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="gdCde != null" >
+                #{gdCde,jdbcType=INTEGER},
+            </if>
+            <if test="gdGroup != null" >
+                #{gdGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="gdPath != null" >
+                #{gdPath,jdbcType=VARCHAR},
+            </if>
+            <if test="gdUrl != null" >
+                #{gdUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="gdPrice != null" >
+                #{gdPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="belongId != null" >
+                #{belongId,jdbcType=INTEGER},
+            </if>
+            <if test="gdDetails != null" >
+                #{gdDetails,jdbcType=VARCHAR},
+            </if>
+            <if test="hitCount != null" >
+                #{hitCount,jdbcType=INTEGER},
+            </if>
+            <if test="gdIndex != null" >
+                #{gdIndex,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Goods" >
+        update GOODS
+        <set >
+            <if test="gdGroup != null" >
+                GD_GROUP = #{gdGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="gdPath != null" >
+                GD_PATH = #{gdPath,jdbcType=VARCHAR},
+            </if>
+            <if test="gdUrl != null" >
+                GD_URL = #{gdUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="gdPrice != null" >
+                GD_PRICE = #{gdPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="belongId != null" >
+                BELONG_ID = #{belongId,jdbcType=INTEGER},
+            </if>
+            <if test="gdDetails != null" >
+                GD_DETAILS = #{gdDetails,jdbcType=VARCHAR},
+            </if>
+            <if test="hitCount != null" >
+                HIT_COUNT = #{hitCount,jdbcType=INTEGER},
+            </if>
+            <if test="gdIndex != null" >
+                GD_INDEX = #{gdIndex,jdbcType=INTEGER},
+            </if>
+        </set>
+        where GD_CDE = #{gdCde,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Goods" >
+        update GOODS
+        set GD_GROUP = #{gdGroup,jdbcType=VARCHAR},
+        GD_PATH = #{gdPath,jdbcType=VARCHAR},
+        GD_URL = #{gdUrl,jdbcType=VARCHAR},
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+        GD_PRICE = #{gdPrice,jdbcType=VARCHAR},
+        BELONG_ID = #{belongId,jdbcType=INTEGER},
+        GD_DETAILS = #{gdDetails,jdbcType=VARCHAR},
+        HIT_COUNT = #{hitCount,jdbcType=INTEGER},
+        GD_INDEX = #{gdIndex,jdbcType=INTEGER}
+        where GD_CDE = #{gdCde,jdbcType=INTEGER}
+    </update>
+    <select id="selectByUsrCde" parameterType="map" resultMap="BaseResultMap">
+        select * from GOODS where
+        <if test="belongId != null" >
+            BELONG_ID = #{belongId,jdbcType=INTEGER}, and
+        </if>
+        GD_INDEX = #{index,jdbcType=INTEGER}
+        order by CREATE_TIME desc;
+    </select>
+</mapper>

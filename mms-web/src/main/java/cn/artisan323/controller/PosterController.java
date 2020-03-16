@@ -3,26 +3,26 @@ package cn.artisan323.controller;
 import cn.artisan323.domain.Poster;
 import cn.artisan323.domain.Usr;
 import cn.artisan323.service.PosterService;
+import cn.artisan323.util.DateUtils;
 import cn.artisan323.util.HttpUtil;
 import cn.artisan323.util.RequestUtil;
 import cn.artisan323.util.ResponseUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -42,9 +42,6 @@ public class PosterController {
         //创建返回工具类
         ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
 
-
-
-
         try {
             Poster poster = new Poster();
             //获得文件名称
@@ -59,41 +56,66 @@ public class PosterController {
             poster.setSuffix(suffix);
             poster.setPosterFullPath(posterUrl + uuid + suffix);
             poster.setUpImgFullPath(upPath + uuid + suffix);
+            poster.setCreateTime(DateUtils.getCurrentFormatDateShort10());
             //保存文件所属者
             Usr usr = (Usr) session.getAttribute("usr");
             poster.setBelongUsrId(usr.getUsrCde());
 
-
-
             //保存文件到本地
             FileUtils.copyInputStreamToFile(uploadPoster.getInputStream(), new File(poster.getUpImgFullPath()));
             logger.info("接收到上传的图片，先存入本地，然后保存入库，保存对象poster = {}", poster.toString());
-
 
             logger.info("测试上传图床开始");
             String url = "http://129.28.173.126:8088/clientupimg/";
             Map<String, String> requestParams = new HashMap<>(2);
             requestParams.put("email", "artisan323@163.com");
             requestParams.put("pass", "123456");
-            Object o = HttpUtil.requestOCRForHttp(url, requestParams, poster.getUpImgFullPath());
-            logger.info("测试上传图床结束  返回数据：{}", o.toString());
-
+            String result = HttpUtil.requestOCRForHttp(url, requestParams, poster.getUpImgFullPath());
+            logger.info("测试上传图床结束  返回数据：{}", result);
+            JSONObject jsonResult = JSON.parseObject(result);
+            String code = jsonResult.getString("code");
+            String msg = jsonResult.getString("msg");
+            JSONArray data = jsonResult.getJSONArray("data");
+            JSONObject da = data.getJSONObject(0);
+            String str = da.getString("Imgurl");
+            logger.info(str);
+            if (str == null || "".equals(str)){
+                logger.info("图床不可用");
+            }else {
+                poster.setFigureBed(str);
+            }
             //创建请求工具
             RequestUtil requestUtil = RequestUtil.getRequestUtil();
             requestUtil.putValueToData("poster", poster);
             //调用生成图片
             responseUtil = posterServiceImpl.createPoster(requestUtil);
         }catch (Exception e){
+            e.printStackTrace();
             logger.error("创建图片失败");
         }
         return "redirect:/index.jsp";
     }
 
     @RequestMapping("/getPoster")
-    public void getPoster(HttpServletRequest request, HttpServletResponse response){
+    public void getPoster(HttpServletRequest request, HttpServletResponse response, HttpSession session){
+        //创建请求工具
+        RequestUtil requestUtil = RequestUtil.getRequestUtil();
+        ResponseUtil responseUtil;
+        String posterPath;
+        Poster poster = null;
         try {
+            Usr usr = (Usr) session.getAttribute("usr");
+            if (usr == null){
+                responseUtil = posterServiceImpl.getPoster(requestUtil);
+                posterPath = (String) responseUtil.getValueFormData("posterPath");
+            }else {
+                String usrCde = usr.getUsrIdNo();
+                requestUtil.putValueToData("usrCde", usrCde);
+                responseUtil = posterServiceImpl.getPoster(requestUtil);
+                posterPath = (String) responseUtil.getValueFormData("posterPath");
+            }
             //这里只是为了测试，所以把文件地址写死了
-            FileInputStream pic = new FileInputStream("/Users/wannengqingnian/Documents/test/createImg/40864e8c-96bf-4fa3-a148-2aa7a45ef595.png");
+            FileInputStream pic = new FileInputStream(posterPath);
             int i = pic.available();
             byte[] date = new byte[i];
             pic.read(date);
@@ -105,10 +127,9 @@ public class PosterController {
             out.write(date);
             out.flush();
             out.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e){
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            logger.info("获取海报失败"+e.getMessage());
         }
     }
 

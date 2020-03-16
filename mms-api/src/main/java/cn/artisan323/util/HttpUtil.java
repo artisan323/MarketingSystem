@@ -221,7 +221,7 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         MultipartEntity reqEntity = new MultipartEntity(); // 建立多文件实例
         FileBody filebody = new FileBody(new File(filePathAndName));
-        reqEntity.addPart("pic", filebody);// upload为请求后台的File upload;
+        reqEntity.addPart("file", filebody);// upload为请求后台的File upload;
         for (String key : requestParams.keySet()) {
             String value = requestParams.get(key);
             reqEntity.addPart(key, new StringBody(value, Charset.forName("utf-8")));

@@ -29,7 +29,17 @@
                     window.location.href = "../Items_list/Smartisan_shop.html";
                 },
                 true);
+
+            $.ajax({
+               url:"http://localhost:8080/mms-web/goods/getGoodsInfo?index=1",
+               type:"get",
+                success:function(data){
+                    var showdiv = $("#getName1");
+                    showdiv.html(data.message);
+                }
+            });
         }
+
     </script>
 </head>
 <body>
@@ -123,12 +133,12 @@
                     <div class="goods-img">
                         <ul>
                             <li>
-                                <img src="pic/index/remen12.jpg" width="206" height="206" />
+                                <img src="${APP_PATH}/goods/getGoods?index=1" width="206" height="206">
                             </li>
                         </ul>
                     </div>
-                    <h3>
-                        FIIL Diva 智能蓝牙无线降噪耳机
+                    <h3 id="getName1">
+
                     </h3>
                 </div>
             </li>

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -46,7 +47,39 @@ public class PosterServiceImpl implements PosterService {
             responseUtil.setSuccess(false);
             responseUtil.setMessage("生成海报失败");
         }
+        return responseUtil;
+    }
 
+    @Override
+    public ResponseUtil getPoster(RequestUtil requestUtil){
+        //创建返回工具类
+        ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
+        try {
+            //拿到请求参数
+            Integer usrCde = (Integer) requestUtil.getValueFormData("usrCde");
+            if (usrCde == null){
+                List<Poster> posters =posterMapper.selectByTime();
+                if (posters.size() <= 0){
+                    logger.info("还没有创建过一次海报");
+                    responseUtil.putValueToData("posterPath", "/Users/wannengqingnian/MyCode/MarketingSystem/mms-web/src/main/webapp/pic/index/cheat.png");
+                }else {
+                    responseUtil.putValueToData("posterPath", posters.get(0).getPosterFullPath());
+                }
+            }else {
+                List<Poster> posters = posterMapper.selectPosterByUsrId(usrCde);
+                if (posters.size() <= 0){
+                    logger.error("还未创建海报");
+                }else {
+                    responseUtil.putValueToData("posterPath", posters.get(0).getPosterFullPath());
+                }
+            }
+            responseUtil.setSuccess(true);
+            responseUtil.setMessage("查询最近一次海报");
+        }catch (Exception e){
+            logger.error("查找海报失败： {}", e.getMessage());
+            responseUtil.setSuccess(false);
+            responseUtil.setMessage("查找海报失败");
+        }
         return responseUtil;
     }
 }

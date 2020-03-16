@@ -22,7 +22,8 @@ application.setAttribute("APP_PATH", request.getContextPath());
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<!---->
-	<script src="js/jquery-1.11.3.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<%--	<script src="js/jquery-1.11.3.js"></script>--%>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.form.js"></script>
@@ -52,6 +53,25 @@ application.setAttribute("APP_PATH", request.getContextPath());
 				}
 			});
 		});
+
+		function submitGoods() {
+			var form = new FormData($("#upGoods")[0]);
+			$.ajax({
+				url:"http://localhost:8080/mms-web/goods/uploadGoods",
+				type:"post",
+				data:form,
+				async: false,
+				cache: false,
+				processData:false,
+				contentType:false,
+				success:function(data){
+					alert("上传商品图片成功");
+				},
+				error:function (error) {
+					alert("上传商品图片失败");
+				}
+			})
+		}
 
 	</script>
 </head>
@@ -131,10 +151,11 @@ application.setAttribute("APP_PATH", request.getContextPath());
 		</h5>
 		<ul>
 			<li class="width-2">
-
-			</li>
-			<li class="width-2">
-
+				<form id="upGoods">
+					<input type="file" name="upGoodsImg">
+					<input type="text" class="form-control" placeholder="Text input" name="index">
+					<input type="submit" class="btn btn-default" value="上传" onclick="submitGoods()">
+				</form>
 			</li>
 		</ul>
 

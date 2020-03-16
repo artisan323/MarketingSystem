@@ -11,4 +11,5 @@ public interface PosterService {
 
     ResponseUtil createPoster(RequestUtil requestUtil);
 
+    ResponseUtil getPoster(RequestUtil requestUtil);
 }

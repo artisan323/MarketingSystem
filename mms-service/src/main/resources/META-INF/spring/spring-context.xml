@@ -11,6 +11,7 @@
     <dubbo:service interface="cn.artisan323.service.EmpService" ref="empServiceImpl" timeout="300000"/>
     <dubbo:service interface="cn.artisan323.service.UsrService" ref="usrServiceImpl" timeout="300000"/>
     <dubbo:service interface="cn.artisan323.service.PosterService" ref="posterServiceImpl" timeout="300000"/>
+    <dubbo:service interface="cn.artisan323.service.GoodsService" ref="goodsServiceImpl" timeout="300000"/>
 
 
 
