@@ -156,11 +156,11 @@
             BELONG_ID = #{belongId,jdbcType=INTEGER}, and
         </if>
         GD_INDEX = #{index,jdbcType=INTEGER}
-        order by CREATE_TIME desc;
+        order by CREATE_TIME desc limit 1;
     </select>
     <select id="selectByIndex" parameterType="map" resultMap="BaseResultMap">
         select * from GOODS where
         GD_INDEX = #{index,jdbcType=INTEGER}
-        order by CREATE_TIME desc;
+        order by CREATE_TIME desc limit 1;
     </select>
 </mapper>

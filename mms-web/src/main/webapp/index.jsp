@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/nav_card.css">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <style type="text/css">
-        .car_hidden{ background: #f8f8f8; position: relative; } .car_hidden .car_total{
-                                                                    position: absolute; bottom: 20px; left: 0; right: 0; margin: auto; }
-    </style>
     <script type="text/javascript">
         $(function() {
             $.ajax({
@@ -31,8 +27,29 @@
                 success:function(data){
                     console.log(data.data);
                     var showdiv = $("#getName1");
-                    alert(data);
-                    showdiv.html(data.data.good1.gdName);
+                    if (data.data.good1.gdName != null){
+                        showdiv.html(data.data.good1.gdName);
+                    }else {
+                        showdiv.html("NULL");
+                    }
+                    showdiv = $("#getName2");
+                    if (data.data.good2.gdName != null){
+                        showdiv.html(data.data.good2.gdName);
+                    }else {
+                        showdiv.html("NULL");
+                    }
+                    showdiv = $("#getName3");
+                    if (data.data.good3.gdName != null){
+                        showdiv.html(data.data.good3.gdName);
+                    }else {
+                        showdiv.html("NULL");
+                    }
+                    showdiv = $("#getName4");
+                    if (data.data.good4.gdName != null){
+                        showdiv.html(data.data.good4.gdName);
+                    }else {
+                        showdiv.html("NULL");
+                    }
                 }
             });
         });
@@ -150,7 +167,7 @@
                         </ul>
                     </div>
                     <h3 id="getName2">
-                        《深泽直人》
+
                     </h3>
 
                 </div>
@@ -160,12 +177,12 @@
                     <div class="goods-img">
                         <ul>
                             <li>
-                                <img src="pic/index/remen3.jpg" width="206" height="206" />
+                                <img src="${APP_PATH}/goods/getGoods?index=3" width="206" height="206" />
                             </li>
                         </ul>
                     </div>
-                    <h3>
-                        Smartisan T2
+                    <h3 id="getName3">
+
                     </h3>
 
                 </div>
@@ -175,12 +192,12 @@
                     <div class="goods-img">
                         <ul>
                             <li>
-                                <img src="pic/index/remen4.jpg" width="206" height="206" />
+                                <img src="${APP_PATH}/goods/getGoods?index=4" width="206" height="206" />
                             </li>
                         </ul>
                     </div>
-                    <h3>
-                        Smartisan S-100 半入耳式耳机
+                    <h3 id="getName4">
+
                     </h3>
                 </div>
             </li>
