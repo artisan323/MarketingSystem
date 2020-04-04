@@ -18,4 +18,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     Goods selectByUsrCde(Map<String, Object> map);
+
+    Goods selectByIndex(Integer index);
 }

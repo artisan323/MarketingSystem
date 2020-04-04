@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Goods implements Serializable {
     private Integer gdCde;
 
-    private String gdGroup;
+    private String gdName;
 
     private String gdPath;
 
@@ -31,12 +31,12 @@ public class Goods implements Serializable {
         this.gdCde = gdCde;
     }
 
-    public String getGdGroup() {
-        return gdGroup;
+    public String getGdName() {
+        return gdName;
     }
 
-    public void setGdGroup(String gdGroup) {
-        this.gdGroup = gdGroup == null ? null : gdGroup.trim();
+    public void setGdName(String gdName) {
+        this.gdName = gdName == null ? null : gdName.trim();
     }
 
     public String getGdPath() {
@@ -107,7 +107,7 @@ public class Goods implements Serializable {
     public String toString() {
         return "Goods{" +
                 "gdCde=" + gdCde +
-                ", gdGroup='" + gdGroup + '\'' +
+                ", gdGroup='" + gdName + '\'' +
                 ", gdPath='" + gdPath + '\'' +
                 ", gdUrl='" + gdUrl + '\'' +
                 ", createTime='" + createTime + '\'' +

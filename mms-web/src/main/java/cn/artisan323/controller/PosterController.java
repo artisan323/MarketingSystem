@@ -65,25 +65,25 @@ public class PosterController {
             FileUtils.copyInputStreamToFile(uploadPoster.getInputStream(), new File(poster.getUpImgFullPath()));
             logger.info("接收到上传的图片，先存入本地，然后保存入库，保存对象poster = {}", poster.toString());
 
-            logger.info("测试上传图床开始");
-            String url = "http://129.28.173.126:8088/clientupimg/";
-            Map<String, String> requestParams = new HashMap<>(2);
-            requestParams.put("email", "artisan323@163.com");
-            requestParams.put("pass", "123456");
-            String result = HttpUtil.requestOCRForHttp(url, requestParams, poster.getUpImgFullPath());
-            logger.info("测试上传图床结束  返回数据：{}", result);
-            JSONObject jsonResult = JSON.parseObject(result);
-            String code = jsonResult.getString("code");
-            String msg = jsonResult.getString("msg");
-            JSONArray data = jsonResult.getJSONArray("data");
-            JSONObject da = data.getJSONObject(0);
-            String str = da.getString("Imgurl");
-            logger.info(str);
-            if (str == null || "".equals(str)){
-                logger.info("图床不可用");
-            }else {
-                poster.setFigureBed(str);
-            }
+//            logger.info("测试上传图床开始");
+////            String url = "http://129.28.173.126:8088/clientupimg/";
+////            Map<String, String> requestParams = new HashMap<>(2);
+////            requestParams.put("email", "artisan323@163.com");
+////            requestParams.put("pass", "123456");
+////            String result = HttpUtil.requestOCRForHttp(url, requestParams, poster.getUpImgFullPath());
+////            logger.info("测试上传图床结束  返回数据：{}", result);
+////            JSONObject jsonResult = JSON.parseObject(result);
+////            String code = jsonResult.getString("code");
+////            String msg = jsonResult.getString("msg");
+////            JSONArray data = jsonResult.getJSONArray("data");
+////            JSONObject da = data.getJSONObject(0);
+////            String str = da.getString("Imgurl");
+//            logger.info(str);
+//            if (str == null || "".equals(str)){
+//                logger.info("图床不可用");
+//            }else {
+//                poster.setFigureBed(str);
+//            }
             //创建请求工具
             RequestUtil requestUtil = RequestUtil.getRequestUtil();
             requestUtil.putValueToData("poster", poster);

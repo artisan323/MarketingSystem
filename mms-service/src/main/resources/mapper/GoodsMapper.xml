@@ -3,7 +3,7 @@
 <mapper namespace="cn.artisan323.dao.GoodsMapper" >
     <resultMap id="BaseResultMap" type="cn.artisan323.domain.Goods" >
         <id column="GD_CDE" property="gdCde" jdbcType="INTEGER" />
-        <result column="GD_GROUP" property="gdGroup" jdbcType="VARCHAR" />
+        <result column="GD_NAME" property="gdName" jdbcType="VARCHAR" />
         <result column="GD_PATH" property="gdPath" jdbcType="VARCHAR" />
         <result column="GD_URL" property="gdUrl" jdbcType="VARCHAR" />
         <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
         <result column="GD_INDEX" property="gdIndex" jdbcType="INTEGER" />
     </resultMap>
     <sql id="Base_Column_List" >
-        GD_CDE, GD_GROUP, GD_PATH, GD_URL, CREATE_TIME, GD_PRICE, BELONG_ID, GD_DETAILS,
+        GD_CDE, GD_NAME, GD_PATH, GD_URL, CREATE_TIME, GD_PRICE, BELONG_ID, GD_DETAILS,
         HIT_COUNT, GD_INDEX
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -28,11 +28,11 @@
         where GD_CDE = #{gdCde,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="cn.artisan323.domain.Goods" >
-        insert into GOODS (GD_CDE, GD_GROUP, GD_PATH,
+        insert into GOODS (GD_CDE, GD_NAME, GD_PATH,
         GD_URL, CREATE_TIME, GD_PRICE,
         BELONG_ID, GD_DETAILS, HIT_COUNT,
         GD_INDEX)
-        values (#{gdCde,jdbcType=INTEGER}, #{gdGroup,jdbcType=VARCHAR}, #{gdPath,jdbcType=VARCHAR},
+        values (#{gdCde,jdbcType=INTEGER}, #{gdName,jdbcType=VARCHAR}, #{gdPath,jdbcType=VARCHAR},
         #{gdUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{gdPrice,jdbcType=VARCHAR},
         #{belongId,jdbcType=INTEGER}, #{gdDetails,jdbcType=VARCHAR}, #{hitCount,jdbcType=INTEGER},
         #{gdIndex,jdbcType=INTEGER})
@@ -43,8 +43,8 @@
             <if test="gdCde != null" >
                 GD_CDE,
             </if>
-            <if test="gdGroup != null" >
-                GD_GROUP,
+            <if test="gdName != null" >
+                GD_NAME,
             </if>
             <if test="gdPath != null" >
                 GD_PATH,
@@ -75,8 +75,8 @@
             <if test="gdCde != null" >
                 #{gdCde,jdbcType=INTEGER},
             </if>
-            <if test="gdGroup != null" >
-                #{gdGroup,jdbcType=VARCHAR},
+            <if test="gdName != null" >
+                #{gdName,jdbcType=VARCHAR},
             </if>
             <if test="gdPath != null" >
                 #{gdPath,jdbcType=VARCHAR},
@@ -107,8 +107,8 @@
     <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Goods" >
         update GOODS
         <set >
-            <if test="gdGroup != null" >
-                GD_GROUP = #{gdGroup,jdbcType=VARCHAR},
+            <if test="gdName != null" >
+                GD_NAME = #{gdName,jdbcType=VARCHAR},
             </if>
             <if test="gdPath != null" >
                 GD_PATH = #{gdPath,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Goods" >
         update GOODS
-        set GD_GROUP = #{gdGroup,jdbcType=VARCHAR},
+        set GD_NAME = #{gdName,jdbcType=VARCHAR},
         GD_PATH = #{gdPath,jdbcType=VARCHAR},
         GD_URL = #{gdUrl,jdbcType=VARCHAR},
         CREATE_TIME = #{createTime,jdbcType=VARCHAR},
@@ -155,6 +155,11 @@
         <if test="belongId != null" >
             BELONG_ID = #{belongId,jdbcType=INTEGER}, and
         </if>
+        GD_INDEX = #{index,jdbcType=INTEGER}
+        order by CREATE_TIME desc;
+    </select>
+    <select id="selectByIndex" parameterType="map" resultMap="BaseResultMap">
+        select * from GOODS where
         GD_INDEX = #{index,jdbcType=INTEGER}
         order by CREATE_TIME desc;
     </select>

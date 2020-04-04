@@ -18,27 +18,24 @@
     <link rel="stylesheet" href="css/white-hide.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/nav_card.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <style type="text/css">
         .car_hidden{ background: #f8f8f8; position: relative; } .car_hidden .car_total{
                                                                     position: absolute; bottom: 20px; left: 0; right: 0; margin: auto; }
     </style>
     <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById("goto_car").addEventListener("click",
-                function(e) {
-                    window.location.href = "../Items_list/Smartisan_shop.html";
-                },
-                true);
-
+        $(function() {
             $.ajax({
-               url:"http://localhost:8080/mms-web/goods/getGoodsInfo?index=1",
-               type:"get",
+                url:"${APP_PATH}/goods/getGoodsInfo",
+                type:"get",
                 success:function(data){
+                    console.log(data.data);
                     var showdiv = $("#getName1");
-                    showdiv.html(data.message);
+                    alert(data);
+                    showdiv.html(data.data.good1.gdName);
                 }
             });
-        }
+        });
 
     </script>
 </head>
@@ -147,11 +144,12 @@
                     <div class="goods-img">
                         <ul>
                             <li>
-                                <img src="pic/index/remen2.jpg" width="206" height="206" />
+                                <img src="${APP_PATH}/goods/getGoods?index=2" width="206" height="206">
+<%--                                <img src="pic/index/remen2.jpg" width="206" height="206" />--%>
                             </li>
                         </ul>
                     </div>
-                    <h3>
+                    <h3 id="getName2">
                         《深泽直人》
                     </h3>
 

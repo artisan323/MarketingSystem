@@ -68,4 +68,22 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return responseUtil;
     }
+
+    @Override
+    public ResponseUtil getGoodsInfo() {
+        ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
+        try {
+            responseUtil.putValueToData("good1", (goodsMapper.selectByIndex(1) == null) ? "null":goodsMapper.selectByIndex(1));
+            responseUtil.putValueToData("good2", (goodsMapper.selectByIndex(2) == null) ? "null":goodsMapper.selectByIndex(2));
+            responseUtil.putValueToData("good3", (goodsMapper.selectByIndex(3) == null) ? "null":goodsMapper.selectByIndex(3));
+            responseUtil.putValueToData("good4", (goodsMapper.selectByIndex(4) == null) ? "null":goodsMapper.selectByIndex(4));
+            responseUtil.setSuccess(true);
+            responseUtil.setMessage("查找商品信息成功");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return responseUtil;
+    }
+
+
 }

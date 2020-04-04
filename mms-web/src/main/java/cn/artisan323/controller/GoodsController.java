@@ -42,7 +42,7 @@ public class GoodsController {
 
     @RequestMapping("/uploadGoods")
     @ResponseBody
-    public ResponseUtil uploadGoods(MultipartFile upGoodsImg, Integer index, HttpSession session){
+    public ResponseUtil uploadGoods(MultipartFile upGoodsImg, Integer index, HttpSession session, String gdName, String gdPrice){
         ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
         //创建请求工具
         RequestUtil requestUtil = RequestUtil.getRequestUtil();
@@ -52,9 +52,13 @@ public class GoodsController {
             Integer usrCde = usr.getUsrCde();
             Goods goods = new Goods();
             goods.setBelongId(usrCde);
+            goods.setGdName(gdName);
+            goods.setGdPrice(gdPrice);
             goods.setCreateTime(DateUtils.getCurrentFormatDateLong14());
             goods.setGdIndex(index);
             String upfileName = upGoodsImg.getOriginalFilename();
+            logger.info("上传图片名称 = {}, 图片位置 = {}", upfileName, index);
+            logger.info("good info = {}", goods.toString());
             String suffix = upfileName.substring(upfileName.lastIndexOf("."));
             String uuid = UUID.randomUUID().toString();
             goods.setGdPath("/Users/wannengqingnian/Documents/test/upImg/" + uuid + suffix);
@@ -67,7 +71,7 @@ public class GoodsController {
             }else {
                 logger.info("商品信息保存失败");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return responseUtil;
@@ -113,23 +117,17 @@ public class GoodsController {
         }
     }
 
-    @RequestMapping("/getGoodsInfo")
-    public ResponseUtil getGoodsInfo(Integer index, HttpServletResponse response, HttpSession session){
+    @RequestMapping(value = "/getGoodsInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseUtil getGoodsInfo(HttpServletResponse response, HttpSession session){
         ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
         try {
-            Usr usr = (Usr) session.getAttribute("usr");
-            if (usr == null){
-                switch (index){
-                    case 1:
-                        responseUtil.setMessage("FILL");
-                }
-            }else {
-
-            }
-
+            logger.info("获取商品名称价格");
+            responseUtil = goodsServiceImpl.getGoodsInfo();
+            logger.info("商品信息 = {}", responseUtil.toString());
         } catch (Exception e){
             e.printStackTrace();
-            logger.info("获取海报失败"+e.getMessage());
+            logger.info("获取商品信息失败"+e.getMessage());
         }
         return responseUtil;
     }
