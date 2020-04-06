@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.FanUsrMapper" >
+  <resultMap id="BaseResultMap" type="cn.artisan323.domain.FanUsr" >
+    <id column="FAN_CDE" property="fanCde" jdbcType="INTEGER" />
+    <result column="FAN_NAME" property="fanName" jdbcType="VARCHAR" />
+    <result column="FAN_PASSWORD" property="fanPassword" jdbcType="VARCHAR" />
+    <result column="WECHAT_ID" property="wechatId" jdbcType="VARCHAR" />
+    <result column="FAN_PHONE" property="fanPhone" jdbcType="VARCHAR" />
+    <result column="QQ_ID" property="qqId" jdbcType="VARCHAR" />
+    <result column="REWARD" property="reward" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FAN_CDE, FAN_NAME, FAN_PASSWORD, WECHAT_ID, FAN_PHONE, QQ_ID, REWARD
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FAN_USR
+    where FAN_CDE = #{fanCde,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FAN_USR
+    where FAN_CDE = #{fanCde,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.artisan323.domain.FanUsr" >
+    insert into FAN_USR (FAN_CDE, FAN_NAME, FAN_PASSWORD, 
+      WECHAT_ID, FAN_PHONE, QQ_ID, 
+      REWARD)
+    values (#{fanCde,jdbcType=INTEGER}, #{fanName,jdbcType=VARCHAR}, #{fanPassword,jdbcType=VARCHAR}, 
+      #{wechatId,jdbcType=VARCHAR}, #{fanPhone,jdbcType=VARCHAR}, #{qqId,jdbcType=VARCHAR}, 
+      #{reward,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.artisan323.domain.FanUsr" >
+    insert into FAN_USR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fanCde != null" >
+        FAN_CDE,
+      </if>
+      <if test="fanName != null" >
+        FAN_NAME,
+      </if>
+      <if test="fanPassword != null" >
+        FAN_PASSWORD,
+      </if>
+      <if test="wechatId != null" >
+        WECHAT_ID,
+      </if>
+      <if test="fanPhone != null" >
+        FAN_PHONE,
+      </if>
+      <if test="qqId != null" >
+        QQ_ID,
+      </if>
+      <if test="reward != null" >
+        REWARD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fanCde != null" >
+        #{fanCde,jdbcType=INTEGER},
+      </if>
+      <if test="fanName != null" >
+        #{fanName,jdbcType=VARCHAR},
+      </if>
+      <if test="fanPassword != null" >
+        #{fanPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="fanPhone != null" >
+        #{fanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqId != null" >
+        #{qqId,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null" >
+        #{reward,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.FanUsr" >
+    update FAN_USR
+    <set >
+      <if test="fanName != null" >
+        FAN_NAME = #{fanName,jdbcType=VARCHAR},
+      </if>
+      <if test="fanPassword != null" >
+        FAN_PASSWORD = #{fanPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        WECHAT_ID = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="fanPhone != null" >
+        FAN_PHONE = #{fanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqId != null" >
+        QQ_ID = #{qqId,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null" >
+        REWARD = #{reward,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FAN_CDE = #{fanCde,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.FanUsr" >
+    update FAN_USR
+    set FAN_NAME = #{fanName,jdbcType=VARCHAR},
+      FAN_PASSWORD = #{fanPassword,jdbcType=VARCHAR},
+      WECHAT_ID = #{wechatId,jdbcType=VARCHAR},
+      FAN_PHONE = #{fanPhone,jdbcType=VARCHAR},
+      QQ_ID = #{qqId,jdbcType=VARCHAR},
+      REWARD = #{reward,jdbcType=VARCHAR}
+    where FAN_CDE = #{fanCde,jdbcType=INTEGER}
+  </update>
+</mapper>

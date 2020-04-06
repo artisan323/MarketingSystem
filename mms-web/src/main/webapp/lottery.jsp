@@ -272,7 +272,7 @@
 			function submitGoods() {
 				var form = new FormData($("#upGoods")[0]);
 				$.ajax({
-					url:"http://localhost:8080/mms-web/goods/uploadGoods",
+					url:"${APP_PATH}/goods/uploadGoods",
 					type:"post",
 					data:form,
 					async: false,

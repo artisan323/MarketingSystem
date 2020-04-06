@@ -8,51 +8,96 @@
     <title>
         商户门店宣传
     </title>
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/block.css">
-    <link rel="stylesheet" href="css/goods.css">
-    <link rel="stylesheet" href="css/luntan.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/white-hide.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/nav_card.css">
+    <link rel="stylesheet" href="${APP_PATH}/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/index.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/block.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/goods.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/luntan.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/app.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/footer.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/white-hide.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="${APP_PATH}/css/nav_card.css">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(function() {
+            getUsr();
+
             $.ajax({
                 url:"${APP_PATH}/goods/getGoodsInfo",
                 type:"get",
                 success:function(data){
                     console.log(data.data);
                     var showdiv = $("#getName1");
+                    var showPrice = $("#price1");
                     if (data.data.good1.gdName != null){
                         showdiv.html(data.data.good1.gdName);
                     }else {
                         showdiv.html("NULL");
                     }
+                    if(data.data.good1.gdPrice != null){
+                        showPrice.html(data.data.good1.gdPrice);
+                    }else {
+                        showPrice.html("NULL");
+                    }
+
                     showdiv = $("#getName2");
+                    showPrice = $("#price2");
                     if (data.data.good2.gdName != null){
                         showdiv.html(data.data.good2.gdName);
                     }else {
                         showdiv.html("NULL");
                     }
+                    if(data.data.good2.gdPrice != null){
+                        showPrice.html(data.data.good2.gdPrice);
+                    }else {
+                        showPrice.html("NULL");
+                    }
+
                     showdiv = $("#getName3");
+                    showPrice = $("#price3");
                     if (data.data.good3.gdName != null){
                         showdiv.html(data.data.good3.gdName);
                     }else {
                         showdiv.html("NULL");
                     }
+                    if(data.data.good3.gdPrice != null){
+                        showPrice.html(data.data.good3.gdPrice);
+                    }else {
+                        showPrice.html("NULL");
+                    }
+
                     showdiv = $("#getName4");
+                    showPrice = $("#price4");
                     if (data.data.good4.gdName != null){
                         showdiv.html(data.data.good4.gdName);
                     }else {
                         showdiv.html("NULL");
                     }
+                    if(data.data.good4.gdPrice != null){
+                        showPrice.html(data.data.good4.gdPrice);
+                    }else {
+                        showPrice.html("NULL");
+                    }
                 }
             });
         });
+
+        //获取用户信息
+        function getUsr() {
+            $.ajax({
+                url:"${APP_PATH}/usr/getUsr",
+                type:"get",
+                success:function (data) {
+                    var name = $("#usrName");
+                    if (data.usrName == null){
+                        name.html("请登录");
+                    }else {
+                        name.html(data.data.usr.usrName);
+                    }
+                }
+            });
+        }
 
     </script>
 </head>
@@ -68,8 +113,11 @@
                 <li>
                     <i aria-hidden="true">
                         <a href="login.jsp" class="person_a">
-                            <img class="customer_logo" src="img\person_mini.png">
+                            <img class="customer_logo" src="${APP_PATH}/img/person_mini.png">
                         </a>
+                    </i>
+                    <i aria-hidden="true" id="usrName">
+
                     </i>
                 </li>
                 <li>
@@ -152,8 +200,18 @@
                         </ul>
                     </div>
                     <h3 id="getName1">
-
                     </h3>
+                    <h6>
+<%--                        手势触控、智能启停--%>
+                    </h6>
+                    <div class="goods-price">
+                        <div class="out_price">
+                            ￥
+                            <span class="price" id="price1">
+<%--										999.00--%>
+									</span>
+                        </div>
+                    </div>
                 </div>
             </li>
             <li class="width-1 getshadow">
@@ -169,7 +227,17 @@
                     <h3 id="getName2">
 
                     </h3>
-
+                    <h6>
+                        <%--                        手势触控、智能启停--%>
+                    </h6>
+                    <div class="goods-price">
+                        <div class="out_price">
+                            ￥
+                            <span class="price" id="price2">
+                                <%--										999.00--%>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </li>
             <li class="width-1 getshadow">
@@ -184,7 +252,17 @@
                     <h3 id="getName3">
 
                     </h3>
-
+                    <h6>
+                        <%--                        手势触控、智能启停--%>
+                    </h6>
+                    <div class="goods-price">
+                        <div class="out_price">
+                            ￥
+                            <span class="price" id="price3">
+                                <%--										999.00--%>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </li>
             <li class="width-1 getshadow">
@@ -197,8 +275,18 @@
                         </ul>
                     </div>
                     <h3 id="getName4">
-
                     </h3>
+                    <h6>
+                        <%--                        手势触控、智能启停--%>
+                    </h6>
+                    <div class="goods-price">
+                        <div class="out_price">
+                            ￥
+                            <span class="price" id="price4">
+                                <%--										999.00--%>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </li>
         </ul>

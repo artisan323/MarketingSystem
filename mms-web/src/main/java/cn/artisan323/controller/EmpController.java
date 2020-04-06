@@ -22,7 +22,7 @@ public class EmpController {
     @ResponseBody
     public Boolean isEmp(){
         Boolean flag = empServiceImpl.isEmp();
-        Emp emp = empServiceImpl.selectEmp();
+        Emp emp = empServiceImpl.selectEmp();//这是emp
         logger.info("flag={}", flag);
         return true;
     }

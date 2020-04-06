@@ -1,6 +1,6 @@
 package cn.artisan323.domain;
 
-public class Goods {
+public class FanUsr {
     private Integer fanCde;
 
     private String fanName;
