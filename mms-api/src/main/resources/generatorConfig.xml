@@ -43,7 +43,7 @@
 
 
         <!-- table指定每个表的生成策略 -->
-        <table tableName="FAN_USR" domainObjectName="FanUsr" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="GOODS" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
     </context>

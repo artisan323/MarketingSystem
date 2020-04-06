@@ -1,73 +1,105 @@
 package cn.artisan323.domain;
 
-public class Goods {
-    private Integer fanCde;
+import java.io.Serializable;
 
-    private String fanName;
+public class Goods implements Serializable {
+    private Integer gdCde;
 
-    private String fanPassword;
+    private String gdName;
 
-    private String wechatId;
+    private String gdPath;
 
-    private String fanPhone;
+    private String gdUrl;
 
-    private String qqId;
+    private String createTime;
 
-    private String reward;
+    private String gdPrice;
 
-    public Integer getFanCde() {
-        return fanCde;
+    private Integer belongId;
+
+    private String gdDetails;
+
+    private Integer hitCount;
+
+    private Integer gdIndex;
+
+    public Integer getGdCde() {
+        return gdCde;
     }
 
-    public void setFanCde(Integer fanCde) {
-        this.fanCde = fanCde;
+    public void setGdCde(Integer gdCde) {
+        this.gdCde = gdCde;
     }
 
-    public String getFanName() {
-        return fanName;
+    public String getGdName() {
+        return gdName;
     }
 
-    public void setFanName(String fanName) {
-        this.fanName = fanName == null ? null : fanName.trim();
+    public void setGdName(String gdName) {
+        this.gdName = gdName == null ? null : gdName.trim();
     }
 
-    public String getFanPassword() {
-        return fanPassword;
+    public String getGdPath() {
+        return gdPath;
     }
 
-    public void setFanPassword(String fanPassword) {
-        this.fanPassword = fanPassword == null ? null : fanPassword.trim();
+    public void setGdPath(String gdPath) {
+        this.gdPath = gdPath == null ? null : gdPath.trim();
     }
 
-    public String getWechatId() {
-        return wechatId;
+    public String getGdUrl() {
+        return gdUrl;
     }
 
-    public void setWechatId(String wechatId) {
-        this.wechatId = wechatId == null ? null : wechatId.trim();
+    public void setGdUrl(String gdUrl) {
+        this.gdUrl = gdUrl == null ? null : gdUrl.trim();
     }
 
-    public String getFanPhone() {
-        return fanPhone;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setFanPhone(String fanPhone) {
-        this.fanPhone = fanPhone == null ? null : fanPhone.trim();
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime == null ? null : createTime.trim();
     }
 
-    public String getQqId() {
-        return qqId;
+    public String getGdPrice() {
+        return gdPrice;
     }
 
-    public void setQqId(String qqId) {
-        this.qqId = qqId == null ? null : qqId.trim();
+    public void setGdPrice(String gdPrice) {
+        this.gdPrice = gdPrice == null ? null : gdPrice.trim();
     }
 
-    public String getReward() {
-        return reward;
+    public Integer getBelongId() {
+        return belongId;
     }
 
-    public void setReward(String reward) {
-        this.reward = reward == null ? null : reward.trim();
+    public void setBelongId(Integer belongId) {
+        this.belongId = belongId;
+    }
+
+    public String getGdDetails() {
+        return gdDetails;
+    }
+
+    public void setGdDetails(String gdDetails) {
+        this.gdDetails = gdDetails == null ? null : gdDetails.trim();
+    }
+
+    public Integer getHitCount() {
+        return hitCount;
+    }
+
+    public void setHitCount(Integer hitCount) {
+        this.hitCount = hitCount;
+    }
+
+    public Integer getGdIndex() {
+        return gdIndex;
+    }
+
+    public void setGdIndex(Integer gdIndex) {
+        this.gdIndex = gdIndex;
     }
 }
