@@ -21,8 +21,6 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(function() {
-            getUsr();
-
             $.ajax({
                 url:"${APP_PATH}/goods/getGoodsInfo",
                 type:"get",
@@ -84,20 +82,35 @@
         });
 
         //获取用户信息
-        function getUsr() {
-            $.ajax({
-                url:"${APP_PATH}/usr/getUsr",
-                type:"get",
-                success:function (data) {
-                    var name = $("#usrName");
-                    if (data.usrName == null){
-                        name.html("请登录");
-                    }else {
-                        name.html(data.data.usr.usrName);
-                    }
-                }
-            });
-        }
+        <%--function getUsr() {--%>
+        <%--    $.ajax({--%>
+        <%--        url:"${APP_PATH}/usr/getUsr",--%>
+        <%--        type:"get",--%>
+        <%--        success:function (data) {--%>
+        <%--            var name = $("#usrName");--%>
+        <%--            if (data.usrName == null){--%>
+        <%--                name.html("请登录");--%>
+        <%--            }else {--%>
+        <%--                name.html(data.data.usr.usrName);--%>
+        <%--            }--%>
+        <%--        }--%>
+        <%--    });--%>
+        <%--}--%>
+        
+        <%--function jump(page) {--%>
+        <%--    $.ajax({--%>
+        <%--        url:"${APP_PATH}/usr/getUsr",--%>
+        <%--        type:"get",--%>
+        <%--        success:function (data) {--%>
+        <%--            var name = $("#usrName");--%>
+        <%--            if (data.usrName == null){--%>
+        <%--                name.html("请登录");--%>
+        <%--            }else {--%>
+        <%--                name.html(data.data.usr.usrName);--%>
+        <%--            }--%>
+        <%--        }--%>
+        <%--    })--%>
+        <%--}--%>
 
     </script>
 </head>
@@ -112,13 +125,11 @@
             <ul class="customer">
                 <li>
                     <i aria-hidden="true">
-                        <a href="login.jsp" class="person_a">
+                        <a href="fanlogin.jsp" class="person_a">
                             <img class="customer_logo" src="${APP_PATH}/img/person_mini.png">
                         </a>
                     </i>
-                    <i aria-hidden="true" id="usrName">
-
-                    </i>
+                    <a href="#" class="person_a"> ${sessionScope.fanUsr.fanName}</a>
                 </li>
                 <li>
                     <i aria-hidden="true">

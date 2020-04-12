@@ -11,5 +11,6 @@
     <dubbo:reference id="usrService" interface="cn.artisan323.service.UsrService" timeout="300000"/>
     <dubbo:reference id="posterService" interface="cn.artisan323.service.PosterService" timeout="300000"/>
     <dubbo:reference id="goodsService" interface="cn.artisan323.service.GoodsService" timeout="300000"/>
+    <dubbo:reference id="fanUsrService" interface="cn.artisan323.service.FanUsrService" timeout="300000"/>
 
 </beans>

@@ -120,6 +120,7 @@ public class GoodsController {
     @RequestMapping(value = "/getGoodsInfo", method = RequestMethod.GET)
     @ResponseBody
     public ResponseUtil getGoodsInfo(HttpServletResponse response, HttpSession session){
+        logger.info("查找商品信息。。。");
         ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
         try {
             logger.info("获取商品名称价格");

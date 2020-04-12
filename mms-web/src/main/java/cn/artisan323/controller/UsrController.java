@@ -60,36 +60,6 @@ public class UsrController {
 
 
     /**
-     * 用户登陆
-     * @param username
-     * @param psw
-     * @return
-     */
-    @RequestMapping(value = "/login2", method = RequestMethod.POST)
-    public ModelAndView login2(HttpServletRequest request, String username, String psw){
-        ModelAndView mv = new ModelAndView();
-        //创建请求工具类
-        RequestUtil requestUtil = RequestUtil.getRequestUtil();
-        requestUtil.putValueToData("userName", username);
-        requestUtil.putValueToData("userPassword", psw);
-
-        //返回接口工具类
-        ResponseUtil responseUtil;
-
-        responseUtil = usrServiceImpl.checkLogin(requestUtil);
-
-        if (responseUtil.isSuccess()){
-            HttpSession session = request.getSession();
-            Usr usr = (Usr) responseUtil.getValueFormData("usr");
-            session.setAttribute("usr", usr);
-            mv.setViewName("forward:index.jsp");
-        }else {
-            mv.setViewName("forward:login.jsp");
-        }
-        return mv;
-    }
-
-    /**
      * 用户注册
      * @param usr
      * @return

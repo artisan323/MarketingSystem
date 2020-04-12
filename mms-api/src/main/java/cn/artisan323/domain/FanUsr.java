@@ -1,6 +1,8 @@
 package cn.artisan323.domain;
 
-public class FanUsr {
+import java.io.Serializable;
+
+public class FanUsr implements Serializable {
     private Integer fanCde;
 
     private String fanName;
