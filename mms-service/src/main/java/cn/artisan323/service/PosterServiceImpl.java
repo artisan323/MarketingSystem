@@ -1,6 +1,8 @@
 package cn.artisan323.service;
 
+import cn.artisan323.dao.ActivityMapper;
 import cn.artisan323.dao.PosterMapper;
+import cn.artisan323.domain.Activity;
 import cn.artisan323.domain.Poster;
 import cn.artisan323.domain.Usr;
 import cn.artisan323.util.PosterUtil;
@@ -24,6 +26,9 @@ public class PosterServiceImpl implements PosterService {
 
     @Autowired
     private PosterMapper posterMapper;
+
+    @Autowired
+    private ActivityMapper activityMapper;
 
     @Override
     public ResponseUtil createPoster(RequestUtil requestUtil) {
@@ -77,6 +82,19 @@ public class PosterServiceImpl implements PosterService {
             responseUtil.setSuccess(false);
             responseUtil.setMessage("查找海报失败");
         }
+        return responseUtil;
+    }
+
+    @Override
+    public void setActivity(Activity activity) {
+        activityMapper.insertSelective(activity);
+    }
+
+    @Override
+    public ResponseUtil getActivity() {
+        ResponseUtil responseUtil = ResponseUtil.createResponseUtil();
+        responseUtil.setSuccess(true);
+        responseUtil.putValueToData("activity",activityMapper.selectByCreateTime());
         return responseUtil;
     }
 }

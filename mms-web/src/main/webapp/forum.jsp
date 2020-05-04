@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	application.setAttribute("APP_PATH", request.getContextPath());
 %>
@@ -18,6 +19,13 @@
 		<link rel="stylesheet" href="css/white-hide.css">
 		<link rel="stylesheet" href="css/nav.css">
 		<link rel="stylesheet" type="text/css" href="css/nav_card.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/publish.css">
+		<link rel="stylesheet" type="text/css" href="css/wangEditor.css">
+
 		<style type="text/css">
 			.car_hidden{ background: #f8f8f8; position: relative; } .car_hidden .car_total{
 			position: absolute; bottom: 20px; left: 0; right: 0; margin: auto; }
@@ -36,10 +44,6 @@
 		<div class="header">
 			<div class="black">
 				<div class="black-main">
-					<h1>
-						<div>
-						</div>
-					</h1>
 					<ul class="customer">
 						<li>
 							<i aria-hidden="true">
@@ -89,9 +93,101 @@
 				
 			</div>
 		</div>
-		<div class="main">
-			
-			
+		<div class="main w clearfix" style="margin-top: 50px">
+			<div class="main-left">
+				<div class="share">
+					<div class="share-left"><span></span>&nbsp;分享与提问</div>
+<%--					<div class="share-right">--%>
+<%--						<a href="toPublish.do"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我要发布</a>--%>
+<%--					</div>--%>
+				</div>
+				<div class="post">
+					<div class="post-wrap">
+						<div class="post-choice">
+							<a href="#" class="post-choice-current">最近</a>
+							<a href="#">最热</a>
+							<a href="#" class="post-choice-last">精华</a>
+						</div>
+
+						<ul class="post-list">
+							<c:forEach items="${forums}" var="forum">
+								<li class="clearfix">
+									<div class="post-image">
+	<%--										<a href="toProfile.do?uid=${post.user.uid}"><img src="${post.user.headUrl}"></a>--%>
+											<img src="${APP_PATH}/img/a.jpg">
+									</div>
+									<div class="post-content">
+										<div class="post-title">${forum.content}</div>
+										<div class="post-other">
+											<div class="post-other-left">
+												<span class="post-username">用户</span>
+												<span>&nbsp;发表</span>
+												<span class="post-time">&nbsp;${forum.createTime}</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</c:forEach>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- 中间主体板块 -->
+		<div class="main w clearfix">
+			<form action="publishPost.do" method="post">
+				<input type="hidden" name="topic.tid" value="1" id="tid">
+				<input type="hidden" name="user.uid" value="${sessionScope.uid}">
+
+				<div class="pub-header"><span></span>&nbsp;话题发布</div>
+				<div class="pub-title">
+					<input type="text" name="title" placeholder="标题：一句话分享">
+				</div>
+
+				<div class="pub-textarea">
+					<button class="pub-button">发布</button>
+				</div>
+			</form>
+
+		</div><!-- 主体结束 -->
+
+		<%--		<div class="col-sm-7">--%>
+<%--			<div class="news-list">--%>
+<%--				<div class="news-list-item clearfix">--%>
+<%--					<div class="col-xs-5">--%>
+<%--&lt;%&ndash;						<img src="img/002.jpg">&ndash;%&gt;--%>
+<%--					</div>--%>
+<%--					<div class="col-xs-7">--%>
+<%--						<ul class="post-list">--%>
+<%--							<c:forEach items="${forums}" var="forum">--%>
+<%--								<li class="clearfix">--%>
+<%--									<div class="post-image">--%>
+<%--&lt;%&ndash;										<a href="toProfile.do?uid=${post.user.uid}"><img src="${post.user.headUrl}"></a>&ndash;%&gt;--%>
+<%--											<img src="${APP_PATH}/img/a.jpg">--%>
+<%--									</div>--%>
+<%--									<div class="post-content">--%>
+<%--										<div class="post-title">${forum.content}</div>--%>
+<%--										<div class="post-other">--%>
+<%--											<div class="post-other-left">--%>
+<%--												<span class="post-username">用户</span>--%>
+<%--												<span>&nbsp;发表</span>--%>
+<%--												<span class="post-time">&nbsp;${forum.createTime}</span>--%>
+<%--											</div>--%>
+<%--										</div>--%>
+<%--									</div>--%>
+<%--								</li>--%>
+<%--							</c:forEach>--%>
+
+<%--						</ul>--%>
+<%--					</div>--%>
+<%--				</div>--%>
+
+<%--			</div>--%>
+<%--		</div>--%>
+<%--		</div>--%>
 		
 		<script src="js/goods-item.js">
 		</script>

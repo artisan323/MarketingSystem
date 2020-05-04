@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="cn.artisan323.domain.Activity" >
+    <id column="A_CDE" property="aCde" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+    <result column="DESC" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    A_CDE, NAME, START_TIME, END_TIME, DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ACTIVITY
+    where A_CDE = #{aCde,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ACTIVITY
+    where A_CDE = #{aCde,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.artisan323.domain.Activity" >
+    insert into ACTIVITY (A_CDE, NAME, START_TIME, 
+      END_TIME, DESC)
+    values (#{aCde,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.artisan323.domain.Activity" >
+    insert into ACTIVITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aCde != null" >
+        A_CDE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="desc != null" >
+        DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aCde != null" >
+        #{aCde,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Activity" >
+    update ACTIVITY
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        DESC = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where A_CDE = #{aCde,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Activity" >
+    update ACTIVITY
+    set NAME = #{name,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=VARCHAR},
+      END_TIME = #{endTime,jdbcType=VARCHAR},
+      DESC = #{desc,jdbcType=VARCHAR}
+    where A_CDE = #{aCde,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByCreateTime" resultMap="BaseResultMap">
+    select * from ACTIVITY order by CREATE_TIME desc;
+  </select>
+</mapper>

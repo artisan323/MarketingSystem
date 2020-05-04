@@ -23,7 +23,7 @@
     <div id="background_con">
         <div id="mainbody">
             <div align="center" id="logo">
-                <img src="${APP_PATH}/img/smartisan_logo.png" />
+                <img src="${APP_PATH}/img/person.png" />
             </div>
             <div class="word" id="word1">
                 <h4 align="center">

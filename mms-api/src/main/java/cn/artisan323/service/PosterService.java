@@ -1,5 +1,6 @@
 package cn.artisan323.service;
 
+import cn.artisan323.domain.Activity;
 import cn.artisan323.util.RequestUtil;
 import cn.artisan323.util.ResponseUtil;
 
@@ -12,4 +13,8 @@ public interface PosterService {
     ResponseUtil createPoster(RequestUtil requestUtil);
 
     ResponseUtil getPoster(RequestUtil requestUtil);
+
+    void setActivity(Activity activity);
+
+    ResponseUtil getActivity();
 }

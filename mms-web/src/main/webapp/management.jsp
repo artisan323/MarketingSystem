@@ -122,10 +122,10 @@
 <div class="header">
     <div class="black">
         <div class="black-main">
-            <h1>
-                <div>
-                </div>
-            </h1>
+<%--            <h1>--%>
+<%--                <div>--%>
+<%--                </div>--%>
+<%--            </h1>--%>
             <ul class="customer">
                 <li>
                     <i aria-hidden="true">
@@ -319,7 +319,21 @@
                             </li>
                         </ul>
                     </div>
-
+                    <div id="2" style="">
+                        <ul>
+                            <form action="${APP_PATH}/poster/activity" method="post">
+                                <div class="panel text">
+                                    <div class="title">活动文案</div>
+                                    <div class="content">
+                                        <input type="text" name="activity">
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <button data-v-cfdfcc88="" type="submit" class="bui-btn-s">提交</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
 
                 </section>
             </div>

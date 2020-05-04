@@ -20,7 +20,7 @@ application.setAttribute("APP_PATH", request.getContextPath());
 <div id="background_con">
 	<div id="mainbody">
 		<div  id="area1" >
-			<b>注册Smartisan ID</b>
+			<b>注册账号</b>
 		</div>
 		<form action="${APP_PATH}/fanUsr/register" method="post">
 			<div id="area2">
@@ -56,7 +56,7 @@ application.setAttribute("APP_PATH", request.getContextPath());
 			<hr style="border : 1px solid  #DADADA;" />
 		</div>
 		<div  id="vvvvv">
-			如果您已有Smartisan ID，则可在此<a href="login.jsp">登录</a>
+			如果您已有账号，则可在此<a href="login.jsp">登录</a>
 		</div>
 	</div>
 

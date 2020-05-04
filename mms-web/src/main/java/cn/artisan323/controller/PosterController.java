@@ -1,5 +1,6 @@
 package cn.artisan323.controller;
 
+import cn.artisan323.domain.Activity;
 import cn.artisan323.domain.Poster;
 import cn.artisan323.domain.Usr;
 import cn.artisan323.service.PosterService;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -131,6 +133,35 @@ public class PosterController {
             e.printStackTrace();
             logger.info("获取海报失败"+e.getMessage());
         }
+    }
+
+    @RequestMapping("/activity")
+    @ResponseBody
+    public String activity(String context){
+        try {
+            logger.info("活动文案 = {}", context);
+            Activity activity = new Activity();
+            activity.setName("活动");
+            activity.setDesc(context);
+            activity.setStartTime(DateUtils.getCurrentFormatDateShort10());
+            posterServiceImpl.setActivity(activity);
+        }catch (Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+        return "true";
+    }
+
+    @RequestMapping("/getActivity")
+    @ResponseBody
+    public String getActivity(){
+        try {
+            ResponseUtil responseUtil = posterServiceImpl.getActivity();
+        }catch (Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+        return "true";
     }
 
 }
