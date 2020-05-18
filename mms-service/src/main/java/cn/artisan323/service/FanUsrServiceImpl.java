@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FanUsrServiceImpl implements FanUsrService{
 
@@ -57,5 +59,10 @@ public class FanUsrServiceImpl implements FanUsrService{
             responseUtil.setSuccess(false);
         }
         return responseUtil;
+    }
+
+    @Override
+    public List<FanUsr> selectAll() {
+        return fanUsrMapper.selectAll();
     }
 }

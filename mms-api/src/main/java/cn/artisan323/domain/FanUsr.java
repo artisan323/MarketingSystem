@@ -72,4 +72,17 @@ public class FanUsr implements Serializable {
     public void setReward(String reward) {
         this.reward = reward == null ? null : reward.trim();
     }
+
+    @Override
+    public String toString() {
+        return "FanUsr{" +
+                "fanCde=" + fanCde +
+                ", fanName='" + fanName + '\'' +
+                ", fanPassword='" + fanPassword + '\'' +
+                ", wechatId='" + wechatId + '\'' +
+                ", fanPhone='" + fanPhone + '\'' +
+                ", qqId='" + qqId + '\'' +
+                ", reward='" + reward + '\'' +
+                '}';
+    }
 }

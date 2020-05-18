@@ -5,13 +5,18 @@ import cn.artisan323.domain.Usr;
 import cn.artisan323.service.FanUsrService;
 import cn.artisan323.util.RequestUtil;
 import cn.artisan323.util.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * 粉丝注册登陆
@@ -20,6 +25,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/fanUsr")
 public class FanUsrController {
+
+    private Logger logger = LoggerFactory.getLogger(FanUsrController.class);
 
     @Autowired
     FanUsrService fanUsrServiceImpl;
@@ -62,6 +69,19 @@ public class FanUsrController {
         }else {
             return "forward:/fansignup.jsp";
         }
+    }
+
+    @RequestMapping("/getFan")
+    @ResponseBody
+    public String getFan(Model model, HttpServletRequest request){
+        try {
+            List<FanUsr> fanUsrs = fanUsrServiceImpl.selectAll();
+            logger.info("fanusrs = {}", fanUsrs);
+            model.addAttribute("fanUsrs", fanUsrs);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "forward:/management.jsp";
     }
 
 }

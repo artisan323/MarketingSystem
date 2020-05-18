@@ -22,10 +22,11 @@
     where F_CDE = #{fCde,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.artisan323.domain.Forum" >
-    insert into FORUM (F_CDE, FUN_ID, content, 
+    insert into FORUM (FUN_ID, content,
       CREATE_TIME, APPROVAL_STATUS)
-    values (#{fCde,jdbcType=INTEGER}, #{funId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=VARCHAR}, #{approvalStatus,jdbcType=INTEGER})
+    values (#{funId}, #{content},
+      #{createTime}, #{approvalStatus})
+
   </insert>
   <insert id="insertSelective" parameterType="cn.artisan323.domain.Forum" >
     insert into FORUM

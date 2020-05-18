@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
     application.setAttribute("APP_PATH", request.getContextPath());
 %>
@@ -8,17 +9,17 @@
     <title>
         Document
     </title>
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/block.css">
-    <link rel="stylesheet" href="css/goods.css">
-    <link rel="stylesheet" href="css/luntan.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/white-hide.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/nav_card.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="${APP_PATH}/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/index.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/block.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/goods.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/luntan.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/app.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/footer.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/white-hide.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="${APP_PATH}/css/nav_card.css">
+    <link rel="stylesheet" href="${APP_PATH}/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         // window.onload = function() {
@@ -130,7 +131,7 @@
                 <li>
                     <i aria-hidden="true">
                         <a href="..\Personal\Personal.html" class="person_a">
-                            <img class="customer_logo" src="img\person_mini.png">
+                            <img class="customer_logo" src="${APP_PATH}/img\person_mini.png">
                         </a>
                     </i>
                 </li>
@@ -186,11 +187,11 @@
                     <a onclick="display(0)" style="width: 120px" class="list-group-item">海报管理</a>
                     <a onclick="display(1)" style="width: 120px" class="list-group-item">商品管理</a>
                     <a onclick="display(2)" style="width: 120px" class="list-group-item">活动管理</a>
-                    <a onclick="display(3)" style="width: 120px" class="list-group-item">论坛管理</a>
+<%--                    <a onclick="display(3)" style="width: 120px" class="list-group-item">论坛管理</a>--%>
                     <a onclick="display(4)" style="width: 120px" class="list-group-item">粉丝管理</a>
-                    <a onclick="display(5)" style="width: 120px" class="list-group-item">动态管理</a>
-                    <a onclick="display(6)" style="width: 120px" class="list-group-item">抽奖管理</a>
-                    <a onclick="display(7)" style="width: 120px" class="list-group-item">历史图片</a>
+<%--                    <a onclick="display(5)" style="width: 120px" class="list-group-item">动态管理</a>--%>
+<%--                    <a onclick="display(6)" style="width: 120px" class="list-group-item">抽奖管理</a>--%>
+<%--                    <a onclick="display(7)" style="width: 120px" class="list-group-item">历史图片</a>--%>
 
                 </div>
             </div>
@@ -334,7 +335,41 @@
                             </form>
                         </ul>
                     </div>
+                    <div id="4" style="">
+                        <ul>
+                            <div class="col-md-12">
+                                <table class="table table-hover" id="emp_table">
+                                    <thead>
+                                    <tr>
+                                        <th>粉丝ID</th>
+                                        <th>粉丝名</th>
+                                        <th>微信号</th>
+                                        <th>手机号</th>
+                                        <th>QQ号</th>
+                                        <th>奖励</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <td>1</td>
+                                    <td>lizhi</td>
+                                    <td>women123</td>
+                                    <td>1827364923</td>
+                                    <td>483923043</td>
+                                    <td>无</td>
+                                        <c:forEach items="${fanUsrs.list}" var="fanUsr">
+                                            <td>${fanUsr.fanCde}</td>
+                                            <td>${fanUsr.fanName}</td>
+                                            <td>${fanUsr.wechatId}</td>
+                                            <td>${fanUsr.fanPhone}</td>
+                                            <td>${fanUsr.qqId}</td>
+                                            <td>${fanUsr.reward}</td>
 
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ul>
+                    </div>
                 </section>
             </div>
 
@@ -343,13 +378,13 @@
     </div>
 
 </div>
-<script src="js/goods-item.js">
+<script src="${APP_PATH}/js/goods-item.js">
 </script>
-<script src="js/shouji.js">
+<script src="${APP_PATH}/js/shouji.js">
 </script>
-<script src="js/scroll.js">
+<script src="${APP_PATH}/js/scroll.js">
 </script>
-<script type="text/javascript" src="js/change_index.js">
+<script type="text/javascript" src="${APP_PATH}/js/change_index.js">
 </script>
 <style type="text/css">
     body{

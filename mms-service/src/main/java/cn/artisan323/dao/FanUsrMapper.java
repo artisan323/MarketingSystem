@@ -3,6 +3,8 @@ package cn.artisan323.dao;
 import cn.artisan323.domain.FanUsr;
 import cn.artisan323.domain.Usr;
 
+import java.util.List;
+
 public interface FanUsrMapper {
     int deleteByPrimaryKey(Integer fanCde);
 
@@ -17,4 +19,6 @@ public interface FanUsrMapper {
     int updateByPrimaryKey(FanUsr record);
 
     FanUsr selectByFanName(String usrLoginName);
+
+    List<FanUsr> selectAll();
 }

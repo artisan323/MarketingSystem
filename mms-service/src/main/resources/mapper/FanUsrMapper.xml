@@ -120,4 +120,7 @@
     from FAN_USR
     where FAN_NAME = #{fanName,jdbcType=VARCHAR}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from  FAN_USR
+  </select>
 </mapper>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.artisan323.dao.DynamicMapper" >
+  <resultMap id="BaseResultMap" type="cn.artisan323.domain.Dynamic" >
+    <id column="DY_CDE" property="dyCde" jdbcType="INTEGER" />
+    <result column="BELONG_ID" property="belongId" jdbcType="INTEGER" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="PIC_PATH" property="picPath" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DY_CDE, BELONG_ID, CONTENT, CREATE_TIME, PIC_PATH, PIC_URL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from DYNAMIC
+    where DY_CDE = #{dyCde,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from DYNAMIC
+    where DY_CDE = #{dyCde,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.artisan323.domain.Dynamic" >
+    insert into DYNAMIC (DY_CDE, BELONG_ID, CONTENT, 
+      CREATE_TIME, PIC_PATH, PIC_URL
+      )
+    values (#{dyCde,jdbcType=INTEGER}, #{belongId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{picPath,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.artisan323.domain.Dynamic" >
+    insert into DYNAMIC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dyCde != null" >
+        DY_CDE,
+      </if>
+      <if test="belongId != null" >
+        BELONG_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH,
+      </if>
+      <if test="picUrl != null" >
+        PIC_URL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dyCde != null" >
+        #{dyCde,jdbcType=INTEGER},
+      </if>
+      <if test="belongId != null" >
+        #{belongId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.artisan323.domain.Dynamic" >
+    update DYNAMIC
+    <set >
+      <if test="belongId != null" >
+        BELONG_ID = #{belongId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DY_CDE = #{dyCde,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.artisan323.domain.Dynamic" >
+    update DYNAMIC
+    set BELONG_ID = #{belongId,jdbcType=INTEGER},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      PIC_URL = #{picUrl,jdbcType=VARCHAR}
+    where DY_CDE = #{dyCde,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from dynamic
+  </select>
+</mapper>

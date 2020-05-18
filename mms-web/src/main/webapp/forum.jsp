@@ -104,9 +104,9 @@
 				<div class="post">
 					<div class="post-wrap">
 						<div class="post-choice">
-							<a href="#" class="post-choice-current">最近</a>
-							<a href="#">最热</a>
-							<a href="#" class="post-choice-last">精华</a>
+<%--							<a href="#" class="post-choice-current">最近</a>--%>
+<%--							<a href="#">最热</a>--%>
+<%--							<a href="#" class="post-choice-last">精华</a>--%>
 						</div>
 
 						<ul class="post-list">
@@ -138,7 +138,7 @@
 
 		<!-- 中间主体板块 -->
 		<div class="main w clearfix">
-			<form action="publishPost.do" method="post">
+			<form action="${APP_PATH}/upForum" method="post">
 				<input type="hidden" name="topic.tid" value="1" id="tid">
 				<input type="hidden" name="user.uid" value="${sessionScope.uid}">
 

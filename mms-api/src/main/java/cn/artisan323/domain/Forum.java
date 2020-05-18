@@ -52,4 +52,15 @@ public class Forum implements Serializable {
     public void setApprovalStatus(Integer approvalStatus) {
         this.approvalStatus = approvalStatus;
     }
+
+    @Override
+    public String toString() {
+        return "Forum{" +
+                "fCde=" + fCde +
+                ", funId=" + funId +
+                ", content='" + content + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", approvalStatus=" + approvalStatus +
+                '}';
+    }
 }

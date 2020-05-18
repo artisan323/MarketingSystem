@@ -147,11 +147,11 @@
                         论坛
                     </a>
                 </li>
-                <li>
-                    <a href="lottery.jsp">
-                        每日抽奖
-                    </a>
-                </li>
+<%--                <li>--%>
+<%--                    <a href="lottery.jsp">--%>
+<%--                        每日抽奖--%>
+<%--                    </a>--%>
+<%--                </li>--%>
             </ul>
         </div>
     </div>
@@ -168,16 +168,16 @@
                         活动
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        福利
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        视频动态
-                    </a>
-                </li>
+<%--                <li>--%>
+<%--                    <a href="#">--%>
+<%--                        福利--%>
+<%--                    </a>--%>
+<%--                </li>--%>
+<%--                <li>--%>
+<%--                    <a href="#">--%>
+<%--                        视频动态--%>
+<%--                    </a>--%>
+<%--                </li>--%>
 
             </ul>
         </div>
@@ -308,34 +308,34 @@
         </h5>
         <p id="contentx"></p>
     </section>
-    <section class="t-block">
-        <h5>
-            品牌精选
-        </h5>
+<%--    <section class="t-block">--%>
+<%--        <h5>--%>
+<%--            品牌精选--%>
+<%--        </h5>--%>
 
-    </section>
-    <section class="t-block">
-        <h5>
-            锤子科技动态
-        </h5>
-        <ul>
-            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji1.jpg) no-repeat center;background-size:100%;">
-            </li>
-            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji2.jpg) no-repeat center;background-size:100%;">
-            </li>
-            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji3.jpg) no-repeat center;background-size:100%;">
-            </li>
-            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji4.png) no-repeat center;background-size:100%;">
-            </li>
-        </ul>
-    </section>
+<%--    </section>--%>
+<%--    <section class="t-block">--%>
+<%--        <h5>--%>
+<%--            锤子科技动态--%>
+<%--        </h5>--%>
+<%--        <ul>--%>
+<%--            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji1.jpg) no-repeat center;background-size:100%;">--%>
+<%--            </li>--%>
+<%--            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji2.jpg) no-repeat center;background-size:100%;">--%>
+<%--            </li>--%>
+<%--            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji3.jpg) no-repeat center;background-size:100%;">--%>
+<%--            </li>--%>
+<%--            <li class="width-1 getshadow" style="height:200px;background:url(pic/index/keji4.png) no-repeat center;background-size:100%;">--%>
+<%--            </li>--%>
+<%--        </ul>--%>
+<%--    </section>--%>
 
-    <section class="t-block" id="luntan">
-        <h5>
-            论坛精选
-        </h5>
+<%--    <section class="t-block" id="luntan">--%>
+<%--        <h5>--%>
+<%--            论坛精选--%>
+<%--        </h5>--%>
 
-    </section>
+<%--    </section>--%>
 </div>
 </div>
 
